@@ -6,3 +6,5 @@
   from = "/*"
   to = "/index.html"
   status = 200
+
+# Trigger redeploy - added at 2026-09-12
