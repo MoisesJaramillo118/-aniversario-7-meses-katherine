@@ -1,39 +1,116 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 
-// Mock image data - in a real app, these would be imported or fetched
+// Updated with all 18 images and their correct filenames
 const images = [
   {
-    src: '/images/whatsapp-1.jpg',
+    src: '/images/WhatsApp Image 2026-09-11 at 22.56.14 (1).jpeg',
     alt: 'Momento especial 1',
     title: 'Mi amorcito',
     text: 'eres mi persona favorita en este mundo, mi confidente, mi cómplice y mi mejor amigo.'
   },
   {
-    src: '/images/whatsapp-2.jpg',
+    src: '/images/WhatsApp Image 2026-09-11 at 22.56.14 (2).jpeg',
     alt: 'Momento especial 2',
     title: 'Gracias por ser especial',
     text: 'gracias por ser especial en mi vida, por tu luz y tu energía que iluminas cada día.'
   },
   {
-    src: '/images/whatsapp-3.jpg',
+    src: '/images/WhatsApp Image 2026-09-11 at 22.56.14.jpeg',
     alt: 'Momento especial 3',
     title: 'Te amo demasiado',
     text: 'te amo demasiado y te quiero por toda la eternidad, cada día más que el anterior.'
   },
   {
-    src: '/images/whatsapp-4.jpg',
+    src: '/images/WhatsApp Image 2026-09-11 at 22.56.15 (1).jpeg',
     alt: 'Momento especial 4',
     title: 'Hace 7 meses',
     text: 'Hace 7 meses conocí al amor de mi vida, y cada día contigo es un regalo que atesoro.'
   },
   {
-    src: '/images/whatsapp-5.jpg',
+    src: '/images/WhatsApp Image 2026-09-11 at 22.56.15 (2).jpeg',
     alt: 'Momento especial 5',
     title: 'Eres hermosa',
     text: 'eres la mujer más hermosa del universo, tanto por dentro como por fuera, y eso me hace el hombre más afortunado.'
+  },
+  {
+    src: '/images/WhatsApp Image 2026-09-11 at 22.56.15 (3).jpeg',
+    alt: 'Momento especial 6',
+    title: 'Siempre estaré',
+    text: 'siempre estaré para ti, en los buenos momentos y en los desafíos.'
+  },
+  {
+    src: '/images/WhatsApp Image 2026-09-11 at 22.56.15.jpeg',
+    alt: 'Momento especial 7',
+    title: 'De la mano',
+    text: 'De la mano juntos por toda la eternidad, enfrentando todo lo que venga.'
+  },
+  {
+    src: '/images/WhatsApp Image 2026-09-11 at 22.56.16 (1).jpeg',
+    alt: 'Momento especial 8',
+    title: 'Cada día',
+    text: 'cada día nos conocemos más y nuestro amor crece y se fortalece.'
+  },
+  {
+    src: '/images/WhatsApp Image 2026-09-11 at 22.56.16 (2).jpeg',
+    alt: 'Momento especial 9',
+    title: 'Aunque tengamos diferencias',
+    text: 'aunque tengamos diferencias, aprendemos a crecer juntas y ser mejores cada día.'
+  },
+  {
+    src: '/images/WhatsApp Image 2026-09-11 at 22.56.16 (3).jpeg',
+    alt: 'Momento especial 10',
+    title: 'Ser felices',
+    text: 'ser felices amándonos el uno al otro es nuestro propósito y nuestra alegría.'
+  },
+  {
+    src: '/images/WhatsApp Image 2026-09-11 at 22.56.16 (4).jpeg',
+    alt: 'Momento especial 11',
+    title: 'Nuestro amor',
+    text: 'nuestro amor es único, especial y lleno de momentos mágicos que atesoramos.'
+  },
+  {
+    src: '/images/WhatsApp Image 2026-09-11 at 22.56.16 (5).jpeg',
+    alt: 'Momento especial 12',
+    title: 'Mi niña hermosa',
+    text: 'eres mi niña hermosa, mi luz en los días oscuros y mi razón para sonreír.'
+  },
+  {
+    src: '/images/WhatsApp Image 2026-09-11 at 22.56.16.jpeg',
+    alt: 'Momento especial 13',
+    title: 'Eres mi vida',
+    text: 'eres el amor de mi vida y mi razón de ser, mi inspiración constante.'
+  },
+  {
+    src: '/images/WhatsApp Image 2026-09-11 at 22.56.17 (1).jpeg',
+    alt: 'Momento especial 14',
+    title: 'Contigo siempre',
+    text: 'contigo quiero estar por siempre y jamás, construyendo nuestro futuro juntos.'
+  },
+  {
+    src: '/images/WhatsApp Image 2026-09-11 at 22.56.17 (2).jpeg',
+    alt: 'Momento especial 15',
+    title: 'Mi eternidad',
+    text: 'eres mi eternidad, mi siempre, mi para siempre, mi hogar y mi refugio.'
+  },
+  {
+    src: '/images/WhatsApp Image 2026-09-11 at 22.56.17 (3).jpeg',
+    alt: 'Momento especial 16',
+    title: 'Te adoro',
+    text: 'te adoro más de lo que las palabras pueden expresar, más allá de lo que cualquier lenguaje puede decir.'
+  },
+  {
+    src: '/images/WhatsApp Image 2026-09-11 at 22.56.17 (4).jpeg',
+    alt: 'Momento especial 17',
+    title: '7 meses de nosotros',
+    text: '7 meses de amor, risas, aprendizajes y crecimiento juntos como pareja.'
+  },
+  {
+    src: '/images/WhatsApp Image 2026-09-11 at 22.56.17.jpeg',
+    alt: 'Momento especial 18',
+    title: 'Mi princessa',
+    text: 'eres mi princesa, mi reina, mi todo, y mereces todo el amor y felicidad del mundo.'
   }
-  // In a real app, you would have all 18 images here
 ];
 
 const Slideshow: React.FC = () => {
