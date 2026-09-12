@@ -11,6 +11,9 @@ function App() {
           <DecorativeElements />
         </div>
 
+        {/* Audio Autoplay */}
+        <audio id="background-audio" autoPlay loop src="/audio/nuestra-cancion.mp3" style={{ display: 'none' }}></audio>
+
         {/* Header Section */}
         <header className="header">
           <div className="container">
@@ -21,12 +24,7 @@ function App() {
               <p className="header-subtitle animate-fade-in">
                 Celebrando cada momento, cada sonrisa y cada latido juntos
               </p>
-              <div className="header-actions">
-                <div className="audio-player">
-                  <AudioController />
-                </div>
-              </div>
-            </div>
+                          </div>
           </div>
         </header>
 
