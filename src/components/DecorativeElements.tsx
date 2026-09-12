@@ -68,57 +68,58 @@ export const DecorativeElements: React.FC = () => {
 
     elements.forEach(el => container.appendChild(el));
 
+    // Add styles for animations
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes float {
+        0%, 100% {
+          transform: translateY(0) translateX(0) rotate(0deg);
+        }
+        33% {
+          transform: translateY(-20px) translateX(-10px) rotate(5deg);
+        }
+        66% {
+          transform: translateY(20px) translateX(10px) rotate(-5deg);
+        }
+      }
+
+      @keyframes blob {
+        0%, 100% {
+          border-radius: 50%;
+        }
+        30% {
+          border-radius: 60% 40% 50% 50% / 60% 30% 70% 40%;
+        }
+        40% {
+          border-radius: 50% 60% 30% 60% / 50% 60% 30% 60%;
+        }
+        50% {
+          border-radius: 50%;
+        }
+        60% {
+          border-radius: 40% 50% 60% 50% / 60% State 40% 70% 60%;
+        }
+        70% {
+          border-radius: 50% 30% 60% 50% / 50% 60% 30% 60%;
+        }
+        80% {
+          border-radius: 40% 50% 50% 60% / 60% 60% 40% 40%;
+        }
+        90% {
+          border-radius: 50% 50% 40% 60% / 60% 40% 60% 50%;
+        }
+      }
+    `;
+    document.head.appendChild(style);
+
     // Cleanup
     return () => {
       document.body.removeChild(container);
+      document.head.removeChild(style);
     };
   }, []);
 
   return null;
 };
-
-// Keyframes for animations
-const style = document.createElement('style');
-style.textContent = `
-  @keyframes float {
-    0%, 100% {
-      transform: translateY(0) translateX(0) rotate(0deg);
-    }
-    33% {
-      transform: translateY(-20px) translateX(-10px) rotate(5deg);
-    }
-    66% {
-      transform: translateY(20px) translateX(10px) rotate(-5deg);
-    }
-  }
-
-  @keyframes blob {
-    0%, 100% {
-      border-radius: 50%;
-    }
-    30% {
-      border-radius: 60% 40% 50% 50% / 60% 30% 70% 40%;
-    }
-    40% {
-      border-radius: 50% 60% 30% 60% / 50% 60% 30% 60%;
-    }
-    50% {
-      border-radius: 50%;
-    }
-    60% {
-      border-radius: 40% 50% 60% 50% / 60% State 40% 70% 60%;
-    }
-    70% {
-      border-radius: 50% 30% 60% 50% / 50% 60% 30% 60%;
-    }
-    80% {
-      border-radius: 40% 50% 50% 60% / 60% 60% 40% 40%;
-    }
-    90% {
-      border-radius: 50% 50% 40% 60% / 60% 40% 60% 50%;
-    }
-  }
-`;
-document.head.appendChild(style);
 
 export default DecorativeElements;
