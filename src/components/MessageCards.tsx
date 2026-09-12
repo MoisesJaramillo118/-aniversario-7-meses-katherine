@@ -72,3 +72,5 @@ export const MessageCards: React.FC = () => {
     </motion.div>
   );
 };
+
+export default MessageCards;

@@ -13,3 +13,5 @@ export const TitleAnimation: React.FC = () => {
     </motion.h1>
   );
 };
+
+export default TitleAnimation;

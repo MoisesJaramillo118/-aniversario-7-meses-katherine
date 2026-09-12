@@ -36,7 +36,7 @@ const images = [
   // In a real app, you would have all 18 images here
 ];
 
-export const Slideshow: React.FC = () => {
+const Slideshow: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const slideshowRef = useRef<HTMLDivElement>(null);
   const [isHovered, setIsHovered] = useState(false);
@@ -192,3 +192,5 @@ export const Slideshow: React.FC = () => {
     </motion.div>
   );
 };
+
+export default Slideshow;

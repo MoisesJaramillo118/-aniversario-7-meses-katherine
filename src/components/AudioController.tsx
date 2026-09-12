@@ -127,3 +127,5 @@ export const AudioController: React.FC = () => {
     </motion.div>
   );
 };
+
+export default AudioController;
