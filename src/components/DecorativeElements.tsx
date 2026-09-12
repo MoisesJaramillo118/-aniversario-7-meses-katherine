@@ -97,7 +97,7 @@ export const DecorativeElements: React.FC = () => {
           border-radius: 50%;
         }
         60% {
-          border-radius: 40% 50% 60% 50% / 60% State 40% 70% 60%;
+          border-radius: 40% 50% 60% 50% / 60% 40% 70% 60%;
         }
         70% {
           border-radius: 50% 30% 60% 50% / 50% 60% 30% 60%;
