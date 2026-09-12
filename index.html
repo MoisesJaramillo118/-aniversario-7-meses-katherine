@@ -172,8 +172,22 @@
             nextSlide.classList.add('active');
         }
 
+        function showPrevSlide() {
+            const currentSlide = slideshow.children[current];
+            currentSlide.classList.remove('active');
+            current = (current - 1 + total) % total;
+            const nextSlide = slideshow.children[current];
+            nextSlide.classList.add('active');
+        }
+
         // Change slide every 6 seconds
-        setInterval(showNextSlide, 6000);
+        let slideInterval = setInterval(showNextSlide, 6000);
+
+        // Reset interval on user interaction (manual navigation)
+        function resetInterval() {
+            clearInterval(slideInterval);
+            slideInterval = setInterval(showNextSlide, 6000);
+        }
 
         // Preload images and then play audio
         let loaded = 0;
@@ -192,6 +206,44 @@
             img.src = slide.src;
             img.onload = imageLoaded;
             img.onerror = imageLoaded; // count as loaded even if error to avoid hanging
+        });
+
+        // Touch support for manual swipe
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        slideshow.addEventListener('touchstart', e => {
+            touchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+
+        slideshow.addEventListener('touchend', e => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        }, { passive: true });
+
+        function handleSwipe() {
+            const swipeThreshold = 50; // minimum distance to trigger
+            const diff = touchStartX - touchEndX;
+            if (diff > swipeThreshold) {
+                // swipe left -> next slide
+                showNextSlide();
+                resetInterval();
+            } else if (diff < -swipeThreshold) {
+                // swipe right -> previous slide
+                showPrevSlide();
+                resetInterval();
+            }
+        }
+
+        // Optional: keyboard arrows
+        document.addEventListener('keydown', e => {
+            if (e.key === 'ArrowRight') {
+                showNextSlide();
+                resetInterval();
+            } else if (e.key === 'ArrowLeft') {
+                showPrevSlide();
+                resetInterval();
+            }
         });
     </script>
 </body>
