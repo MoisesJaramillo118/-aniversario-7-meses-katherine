@@ -198,12 +198,21 @@ const Slideshow: React.FC = () => {
         animate={{ scale: 1.03 }}
         transition={{ duration: 12, ease: 'easeInOut' }}
         style={{
-          backgroundImage: `url(${images[currentIndex].src})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat'
+          overflow: 'hidden',
+          width: '100%',
+          height: '100%'
         }}
       >
+        <motion.img
+          src={images[currentIndex].src}
+          alt={images[currentIndex].alt}
+          className="object-cover w-full h-full"
+          style={{
+            width: '100%',
+            height: '100%',
+            objectPosition: 'center'
+          }}
+        />
         {/* Overlay for text readability */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
 
