@@ -1,0 +1,174 @@
+/* Reset and base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
+    color: #333;
+    overflow-x: hidden;
+}
+
+/* Container */
+.container {
+    position: relative;
+    min-height: 100vh;
+    width: 100%;
+    overflow: hidden;
+}
+
+/* Slideshow */
+.slideshow {
+    position: relative;
+    width: 100%;
+    height: 70vh; /* Adjust as needed */
+    overflow: hidden;
+}
+
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out;
+    display: flex;
+    align-items: flex-end;
+    padding: 2rem;
+}
+
+.slide.active {
+    opacity: 1;
+}
+
+/* Overlay for text readability */
+.slide-overlay {
+    background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+    width: 100%;
+    padding: 1.5rem;
+    border-radius: 12px;
+    color: white;
+    backdrop-filter: blur(4px);
+}
+
+.slide-title {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    font-family: 'Playfair Display', serif;
+}
+
+.slide-text {
+    font-size: 1.2rem;
+    line-height: 1.5;
+    max-width: 80%;
+}
+
+/* Messages */
+.messages {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 2rem;
+    background: rgba(255,255,255,0.8);
+    backdrop-filter: blur(4px);
+    border-top: 1px solid rgba(0,0,0,0.1);
+}
+
+.messages-grid {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.message-card {
+    background: white;
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.message-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+
+.message-icon {
+    font-size: 2rem;
+    margin-bottom: 0.8rem;
+}
+
+.message-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #d6336c;
+    margin-bottom: 0.5rem;
+}
+
+.message-text {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #555;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .slideshow {
+        height: 60vh;
+    }
+    .slide-title {
+        font-size: 1.8rem;
+    }
+    .slide-text {
+        font-size: 1rem;
+    }
+    .messages {
+        padding: 1rem;
+    }
+    .message-card {
+        padding: 1rem;
+    }
+}
+
+/* Optional: decorative floating elements (kept from previous) */
+.decorative {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.decorative div {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.15;
+    animation: float 12s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0) translateX(0); }
+    33% { transform: translateY(-15px) translateX(-10px); }
+    66% { transform: translateY(15px) translateX(10px); }
+}
+
+/* Font imports */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Playfair+Display:wght@700&display=swap');

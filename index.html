@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7 Meses de Nuestro Amor</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Audio element (hidden) -->
+        <audio id="background-audio" loop preload="auto">
+            <source src="/audio/nuestra-cancion.mp3" type="audio/mpeg">
+            Tu navegador no soporta el elemento de audio.
+        </audio>
+
+        <div class="slideshow">
+            <!-- Slides will be generated via JS for simplicity, but we can also hardcode -->
+        </div>
+
+        <div class="messages">
+            <!-- Romantic messages will appear below slideshow -->
+        </div>
+    </div>
+
+    <script>
+        // Data for slides and messages
+        const slides = [
+            {
+                src: '/images/WhatsApp Image 2026-09-11 at 22.56.14 (1).jpeg',
+                title: 'Mi amorcito',
+                text: 'eres mi persona favorita en este mundo, mi confidente, mi cómplice y mi mejor amigo.'
+            },
+            {
+                src: '/images/WhatsApp Image 2026-09-11 at 22.56.14 (2).jpeg',
+                title: 'Gracias por ser especial',
+                text: 'gracias por ser especial en mi vida, por tu luz y tu energía que iluminas cada día.'
+            },
+            {
+                src: '/images/WhatsApp Image 2026-09-11 at 22.56.14.jpeg',
+                title: 'Te amo demasiado',
+                text: 'te amo demasiado y te quiero por toda la eternidad, cada día más que el anterior.'
+            },
+            {
+                src: '/images/WhatsApp Image 2026-09-11 at 22.56.15 (1).jpeg',
+                title: 'Hace 7 meses',
+                text: 'Hace 7 meses conocí al amor de mi vida, y cada día contigo es un regalo que atesoro.'
+            },
+            {
+                src: '/images/WhatsApp Image 2026-09-11 at 22.56.15 (2).jpeg',
+                title: 'Eres hermosa',
+                text: 'eres la mujer más hermosa del universo, tanto por dentro como por fuera, y eso me hace el hombre más afortunado.'
+            },
+            {
+                src: '/images/WhatsApp Image 2026-09-11 at 22.56.15 (3).jpeg',
+                title: 'Siempre estaré',
+                text: 'siempre estaré para ti, en los buenos momentos y en los desafíos.'
+            },
+            {
+                src: '/images/WhatsApp Image 2026-09-11 at 22.56.15.jpeg',
+                title: 'De la mano',
+                text: 'De la mano juntos por toda la eternidad, enfrentando todo lo que venga.'
+            },
+            {
+                src: '/images/WhatsApp Image 2026-09-11 at 22.56.16 (1).jpeg',
+                title: 'Cada día',
+                text: 'cada día nos conocemos más y nuestro amor crece y se fortalece.'
+            },
+            {
+                src: '/images/WhatsApp Image 2026-09-11 at 22.56.16 (2).jpeg',
+                title: 'Aunque tengamos diferencias',
+                text: 'aunque tengamos diferencias, aprendemos a crecer juntas y ser mejores cada día.'
+            },
+            {
+                src: '/images/WhatsApp Image 2026-09-11 at 22.56.16 (3).jpeg',
+                title: 'Ser felices',
+                text: 'ser felices amándonos el uno al otro es nuestro propósito y nuestra alegría.'
+            },
+            {
+                src: '/images/WhatsApp Image 2026-09-11 at 22.56.16 (4).jpeg',
+                title: 'Nuestro amor',
+                text: 'nuestro amor es único, especial y lleno de momentos mágicos que atesoramos.'
+            },
+            {
+                src: '/images/WhatsApp Image 2026-09-11 at 22.56.16 (5).jpeg',
+                title: 'Mi niña hermosa',
+                text: 'eres mi niña hermosa, mi luz en los días oscuros y mi razón para sonreír.'
+            },
+            {
+                src: '/images/WhatsApp Image 2026-09-11 at 22.56.16.jpeg',
+                title: 'Eres mi vida',
+                text: 'eres el amor de mi vida y mi razón de ser, mi inspiración constante.'
+            },
+            {
+                src: '/images/WhatsApp Image 2026-09-11 at 22.56.17 (1).jpeg',
+                title: 'Contigo siempre',
+                text: 'contigo quiero estar por siempre y jamás, construyendo nuestro futuro juntos.'
+            },
+            {
+                src: '/images/WhatsApp Image 2026-09-11 at 22.56.17 (2).jpeg',
+                title: 'Mi eternidad',
+                text: 'eres mi eternidad, mi siempre, mi para siempre, mi hogar y mi refugio.'
+            },
+            {
+                src: '/images/WhatsApp Image 2026-09-11 at 22.56.17 (3).jpeg',
+                title: 'Te adoro',
+                text: 'te adoro más de lo que las palabras pueden expresar, más allá de lo que cualquier lenguaje puede decir.'
+            },
+            {
+                src: '/images/WhatsApp Image 2026-09-11 at 22.56.17 (4).jpeg',
+                title: '7 meses de nosotros',
+                text: '7 meses de amor, risas, aprendizajes y crecimiento juntos como pareja.'
+            },
+            {
+                src: '/images/WhatsApp Image 2026-09-11 at 22.56.17.jpeg',
+                title: 'Mi princessa',
+                text: 'eres mi princesa, mi reina, mi todo, y mereces todo el amor y felicidad del mundo.'
+            }
+        ];
+
+        const messages = [
+            { icon: '💖', title: 'Mi amorcito', text: 'eres mi persona favorita en este mundo, mi confidente, mi cómplice y mi mejor amigo. Contigo descubrí lo que significa amar profundamente y ser amado a cambio.' },
+            { icon: '👧', title: 'Mi niña hermosa', text: 'cada día descubro lo afortunado que soy de tener a alguien tan especial, tan bella por dentro y por fuera. Tu sonrisa ilumina mis días oscuros.' },
+            { icon: '♾️', title: 'Mi eternidad', text: 'contigo quiero construir un futuro lleno de amor, aventuras y momentos que atesoraremos para siempre. Eres mi hogar, mi refugio y mi razón de ser.' },
+            { icon: '😄', title: 'Nuestra alegría', text: 'juntos encontramos la felicidad en las cosas simples: una conversación, una sonrisa, un abrazo. Nuestra risa es la mejor música que existe.' },
+            { icon: '🌟', title: 'Nuestro crecimiento', text: 'aunque tengamos diferencias, aprendemos a crecer juntas y ser mejores cada día. Nuestra relación nos enseña paciencia, comprensión y amor incondicional.' },
+            { icon: '🎯', title: 'Nuestro propósito', text: 'ser felices amándonos el uno al otro es nuestro propósito y nuestra alegría. Juntos somos más fuertes, más valientes y más completos.' }
+        ];
+
+        const slideshow = document.querySelector('.slideshow');
+        const messagesContainer = document.querySelector('.messages');
+        const audio = document.getElementById('background-audio');
+
+        // Create slides
+        slides.forEach((slide, index) => {
+            const slideDiv = document.createElement('div');
+            slideDiv.className = `slide${index === 0 ? ' active' : ''}`;
+            slideDiv.style.backgroundImage = `url('${slide.src}')`;
+            slideDiv.innerHTML = `
+                <div class="slide-overlay">
+                    <h2 class="slide-title">${slide.title}</h2>
+                    <p class="slide-text">${slide.text}</p>
+                </div>
+            `;
+            slideshow.appendChild(slideDiv);
+        });
+
+        // Create messages
+        const messagesDiv = document.createElement('div');
+        messagesDiv.className = 'messages-grid';
+        messages.forEach(msg => {
+            const msgDiv = document.createElement('div');
+            msgDiv.className = 'message-card';
+            msgDiv.innerHTML = `
+                <div class="message-icon">${msg.icon}</div>
+                <h3 class="message-title">${msg.title}</h3>
+                <p class="message-text">${msg.text}</p>
+            `;
+            messagesDiv.appendChild(msgDiv);
+        });
+        messagesContainer.appendChild(messagesDiv);
+
+        // Slideshow animation via CSS classes toggled by JS
+        let current = 0;
+        const total = slides.length;
+
+        function showNextSlide() {
+            const currentSlide = slideshow.children[current];
+            currentSlide.classList.remove('active');
+            current = (current + 1) % total;
+            const nextSlide = slideshow.children[current];
+            nextSlide.classList.add('active');
+        }
+
+        // Change slide every 6 seconds
+        setInterval(showNextSlide, 6000);
+
+        // Preload images and then play audio
+        let loaded = 0;
+        const totalImages = slides.length;
+
+        function imageLoaded() {
+            loaded++;
+            if (loaded >= totalImages) {
+                // All images loaded, play audio
+                audio.play().catch(e => console.log('Autoplay prevented:', e));
+            }
+        }
+
+        slides.forEach(slide => {
+            const img = new Image();
+            img.src = slide.src;
+            img.onload = imageLoaded;
+            img.onerror = imageLoaded; // count as loaded even if error to avoid hanging
+        });
+    </script>
+</body>
+</html>
