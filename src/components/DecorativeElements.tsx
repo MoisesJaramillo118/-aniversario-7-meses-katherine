@@ -62,7 +62,7 @@ export const DecorativeElements: React.FC = () => {
     // Add various types of elements
     const elements = [];
     for (let i = 0; i < 8; i++) {
-      const type = ['circle', 'blob', 'line'][Math.floor(Math.random() * 3)];
+      const type = ['circle', 'blob', 'line'][Math.floor(Math.random() * 3)] as 'circle' | 'blob' | 'line';
       elements.push(createElement(type));
     }
 
