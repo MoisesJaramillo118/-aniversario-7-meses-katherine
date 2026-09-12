@@ -3,7 +3,7 @@
   --primary-color: #ff6b9d;
   --secondary-color: #4ecdc4;
   --accent-color: #ffe66d;
-  --background-gradient: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 99 100%);
+  --background-gradient: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 99%);
   --dark-text: #2d3436;
   --light-text: #fff;
 }
