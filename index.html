@@ -3,408 +3,367 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>7 Meses — Katherine &amp; Moisés</title>
-<!-- Tipografías distintivas: Fraunces (editorial romántica) + Outfit (moderna legible). Nada de Inter/Roboto genérico. -->
+<title>7 Meses — Katherine &amp; Moisés 💖</title>
+<meta name="description" content="Celebrando 7 meses de amor con Katherine">
+<script>document.documentElement.classList.add('js')</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,700;0,9..144,900;1,9..144,600;1,9..144,700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,900;1,9..144,600;1,9..144,700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
-/* === TEMA ROMÁNTICO ELEGANTE === */
+/* ============ TEMA ============ */
 :root{
-  --bg-deep:#18060d;
-  --wine:#5c1023;
-  --wine-2:#8d1b3d;
-  --rose:#e6397a;
-  --blush:#ffb3c6;
-  --cream:#fdf6ec;
-  --cream-2:#f7e8d3;
-  --gold:#d9a441;
-  --ink:#2b0a12;
-  --muted:#9a7a82;
-  --card:#fffdf8;
-  --stage-bg:#18060d;
-  --slide-bg:#fdf6ec;
-  --font-display:'Fraunces',serif;
-  --font-body:'Outfit',sans-serif;
-  --ease:cubic-bezier(.16,1,.3,1);
+  --wine:#5c1023; --wine2:#8d1b3d; --rose:#e6397a; --blush:#ffb3c6;
+  --cream:#fdf6ec; --gold:#d9a441; --ink:#2b0a12; --muted:#8a5a63;
+  --fd:'Fraunces',Georgia,serif; --fb:'Outfit',system-ui,sans-serif;
 }
 *{margin:0;padding:0;box-sizing:border-box}
-/* === VIEWPORT-BASE.CSS (OBLIGATORIO SKILL frontend-slides, incluido íntegro) === */
-html,body{width:100%;height:100%;margin:0;overflow:hidden;background:var(--stage-bg,#000)}
-.deck-viewport{position:fixed;inset:0;overflow:hidden;background:var(--stage-bg,#000)}
-.deck-stage{position:absolute;left:0;top:0;width:1920px;height:1080px;overflow:hidden;transform-origin:0 0;background:var(--slide-bg,#fff)}
-.slide{position:absolute;inset:0;width:1920px;height:1080px;overflow:hidden;display:block;visibility:hidden;opacity:0;pointer-events:none;background:var(--slide-bg,#fff)}
-.slide.active,.slide.visible{visibility:visible;opacity:1;pointer-events:auto;z-index:1}
-img,video,canvas,svg{max-width:100%;max-height:100%}
-.deck-controls{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);z-index:1000}
-@media print{html,body{width:1920px;height:auto;overflow:visible;background:#fff}.deck-viewport{position:static;overflow:visible;background:#fff}.deck-stage{position:static;width:auto;height:auto;transform:none!important;background:none}.slide{position:relative;display:block!important;visibility:visible!important;opacity:1!important;pointer-events:auto!important;width:1920px;height:1080px;break-after:page;page-break-after:always}.slide:last-child{break-after:auto;page-break-after:auto}.deck-controls{display:none!important}}
-@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.2s!important}}
-/* === DISEÑO === */
-body{font-family:var(--font-body);color:var(--ink)}
-.slide-inner{width:1920px;height:1080px;padding:84px 96px;display:flex;gap:64px;align-items:center;position:relative}
-.eyebrow{display:inline-flex;align-items:center;gap:14px;font-size:26px;letter-spacing:6px;text-transform:uppercase;color:var(--wine-2);font-weight:700}
-.eyebrow::before{content:'';width:56px;height:3px;background:var(--rose);display:inline-block;border-radius:2px}
-h1,h2{font-family:var(--font-display);line-height:.95;color:var(--ink)}
-.cover-title{font-size:150px;font-weight:900}
-.cover-title em{font-style:italic;font-weight:700;color:var(--wine-2)}
-.script{font-family:var(--font-display);font-style:italic;font-size:56px;color:var(--rose)}
-.lead{font-size:34px;line-height:1.5;color:#5a323c;max-width:760px}
-.badge{display:inline-flex;align-items:center;gap:12px;background:var(--ink);color:var(--cream);border-radius:999px;padding:16px 30px;font-size:26px;font-weight:600;letter-spacing:2px}
-.badge .dot{width:12px;height:12px;border-radius:50%;background:var(--rose)}
-.num{position:absolute;top:56px;left:96px;font-family:var(--font-display);font-size:32px;color:var(--muted);letter-spacing:3px}
-.brand{position:absolute;top:56px;right:96px;font-size:26px;letter-spacing:4px;color:var(--muted);font-weight:600}
-.photo-wrap{position:relative;flex:1;height:880px;border-radius:48px;overflow:hidden;box-shadow:0 40px 100px rgba(92,16,35,.35);border:10px solid #fff;transform:rotate(1.5deg)}
-.photo-wrap.straight{transform:none}
-.photo-wrap img{width:100%;height:100%;object-fit:cover;animation:kenburns 9s ease-in-out infinite alternate}
-@keyframes kenburns{from{transform:scale(1)}to{transform:scale(1.12)}}
-.photo-wrap::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(24,6,13,.45),transparent 55%)}
-.photo-caption{position:absolute;left:36px;bottom:32px;z-index:2;color:#fff;font-family:var(--font-display);font-style:italic;font-size:40px;text-shadow:0 2px 20px rgba(0,0,0,.6)}
-.text-col{flex:1.05}
-.pill-row{display:flex;gap:16px;margin:28px 0;flex-wrap:wrap}
-.pill{background:#fff;border:2px solid #f0d6de;border-radius:999px;padding:14px 26px;font-size:26px;font-weight:600;color:var(--wine-2)}
-.duo{display:flex;gap:28px;flex:1;height:880px}
-.duo .photo-wrap{height:100%;flex:1}
-.duo .photo-wrap:nth-child(2){transform:rotate(-1.5deg);margin-top:60px}
-.cards3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:32px;margin-top:36px}
-.mcard{background:var(--card);border-radius:36px;padding:48px 40px;box-shadow:0 20px 60px rgba(92,16,35,.15);border:1px solid #f3ddd2;min-height:520px}
-.mcard .ico{font-size:64px}
-.mcard h3{font-family:var(--font-display);font-size:48px;margin:16px 0;color:var(--wine-2)}
-.mcard p{font-size:29px;line-height:1.6;color:#5a323c}
-.quote-big{font-family:var(--font-display);font-size:84px;line-height:1.05;font-style:italic}
-.hearts-bg{position:absolute;inset:0;pointer-events:none;overflow:hidden}
-.hearts-bg span{position:absolute;font-size:48px;opacity:.5;animation:float 9s ease-in-out infinite}
-@keyframes float{0%,100%{transform:translateY(0) rotate(-6deg)}50%{transform:translateY(-40px) rotate(8deg)}}
-/* animación de entrada */
-.reveal{opacity:0;transform:translateY(42px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
-.slide.visible .reveal{opacity:1;transform:none}
-.slide.visible .reveal:nth-child(2){transition-delay:.12s}
-.slide.visible .reveal:nth-child(3){transition-delay:.22s}
-.slide.visible .reveal:nth-child(4){transition-delay:.32s}
-/* === CONTROLES FUERA DEL STAGE (sí pueden usar clamp y ser táctiles) === */
-.deck-controls{display:flex;align-items:center;gap:14px;background:rgba(24,6,13,.82);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.15);padding:12px 18px;border-radius:999px;box-shadow:0 10px 40px rgba(0,0,0,.4);max-width:94vw}
-.cbtn{border:none;cursor:pointer;border-radius:999px;font-family:var(--font-body);font-weight:700;color:#fff;background:var(--rose);min-width:clamp(52px,8vw,64px);min-height:clamp(52px,8vw,64px);font-size:clamp(20px,3vw,26px);display:flex;align-items:center;justify-content:center;padding:0 18px;transition:transform .2s}
-.cbtn:active{transform:scale(.93)}
-.cbtn.ghost{background:rgba(255,255,255,.12)}
-.cbtn.music.on{background:var(--gold);color:#2b0a12}
-#dots{display:flex;gap:8px;max-width:36vw;overflow-x:auto;padding:4px}
-#dots button{width:14px;height:14px;min-width:14px;border-radius:50%;border:none;background:rgba(255,255,255,.3);cursor:pointer}
-#dots button.on{background:var(--blush);transform:scale(1.35)}
-#counter{color:#fff;font-size:clamp(14px,2.6vw,18px);font-weight:600;white-space:nowrap}
-#progress{position:fixed;top:0;left:0;height:6px;background:linear-gradient(90deg,var(--rose),var(--gold));width:0;z-index:1001}
-#hint{position:fixed;top:14px;left:50%;transform:translateX(-50%);z-index:1000;color:#fff;background:rgba(0,0,0,.45);padding:10px 20px;border-radius:999px;font-size:clamp(13px,2.8vw,17px)}
+html{scroll-behavior:smooth}
+body{font-family:var(--fb);background:var(--cream);color:var(--ink);overflow-x:hidden}
+/* ============ ESTRUCTURA: diapositivas verticales con scroll-snap ============ */
+.deck{scroll-snap-type:y mandatory;overflow-y:auto;height:100dvh}
+.slide{scroll-snap-align:start;scroll-snap-stop:always;min-height:100dvh;display:flex;flex-direction:column;justify-content:center;position:relative;padding:88px 22px 120px;overflow:hidden}
+.wrap{width:100%;max-width:640px;margin:0 auto;position:relative;z-index:2}
+/* ============ TIPOGRAFÍA ============ */
+.eyebrow{display:inline-block;font-size:12px;letter-spacing:4px;font-weight:700;color:var(--wine2);text-transform:uppercase;margin-bottom:12px}
+.eyebrow::before{content:'';display:inline-block;width:26px;height:3px;background:var(--rose);border-radius:2px;vertical-align:middle;margin-right:10px}
+h1,h2{font-family:var(--fd);line-height:1.02}
+.big{font-size:clamp(44px,11vw,76px);font-weight:900}
+.big em{font-style:italic;color:var(--wine2)}
+.script{font-family:var(--fd);font-style:italic;font-size:clamp(20px,5.4vw,28px);color:var(--rose);margin-top:10px}
+.lead{font-size:clamp(16px,4.4vw,20px);line-height:1.65;color:#5a323c;margin-top:14px}
+.badge{display:inline-flex;align-items:center;gap:8px;background:var(--ink);color:var(--cream);border-radius:999px;padding:10px 20px;font-size:13px;font-weight:700;letter-spacing:2px}
+.badge i{width:9px;height:9px;border-radius:50%;background:var(--rose);font-style:normal}
+/* ============ FOTOS ============ */
+.ph{border-radius:26px;overflow:hidden;border:6px solid #fff;box-shadow:0 24px 60px rgba(92,16,35,.30);position:relative;background:#f3ddd2}
+.ph img{width:100%;height:100%;object-fit:cover;display:block}
+.ph.tall img{height:min(52dvh,430px)}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:18px}
+.duo .ph img{height:30dvh;min-height:210px}
+.cap{position:absolute;left:14px;bottom:12px;color:#fff;font-family:var(--fd);font-style:italic;font-size:19px;text-shadow:0 2px 12px rgba(0,0,0,.7)}
+.hero-bg{position:absolute;inset:0;z-index:0}
+.hero-bg img{width:100%;height:100%;object-fit:cover}
+.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(24,6,13,.88) 8%,rgba(24,6,13,.45) 45%,rgba(24,6,13,.25))}
+.slide.dark{background:var(--ink);color:var(--cream)}
+.slide.dark .lead{color:#f0d6c8}
+/* ============ TARJETAS ============ */
+.cards{display:grid;gap:14px;margin-top:20px}
+.mcard{background:#fffdf8;border:1px solid #f3ddd2;border-radius:22px;padding:22px;box-shadow:0 12px 32px rgba(92,16,35,.12)}
+.mcard .ico{font-size:34px}
+.mcard h3{font-family:var(--fd);font-size:24px;color:var(--wine2);margin:8px 0 6px}
+.mcard p{font-size:16px;line-height:1.6;color:#5a323c}
+/* ============ BOTONES (grandes, táctiles) ============ */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;border:none;cursor:pointer;font-family:var(--fb);font-weight:700;font-size:18px;border-radius:999px;padding:18px 34px;min-height:60px;text-decoration:none}
+.btn.rose{background:var(--rose);color:#fff;box-shadow:0 12px 30px rgba(230,57,122,.45)}
+.btn.ghost{background:rgba(255,255,255,.16);color:#fff;border:2px solid rgba(255,255,255,.5)}
+.btn:active{transform:scale(.96)}
+.cta-row{display:flex;gap:12px;margin-top:24px;flex-wrap:wrap}
+/* Barra de controles fija */
+.controls{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(12px + env(safe-area-inset-bottom));z-index:50;display:flex;align-items:center;gap:10px;background:rgba(24,6,13,.85);backdrop-filter:blur(12px);padding:10px 14px;border-radius:999px;max-width:94vw;box-shadow:0 10px 34px rgba(0,0,0,.4)}
+.nbtn{border:none;cursor:pointer;border-radius:50%;width:56px;height:56px;min-width:56px;font-size:22px;background:var(--rose);color:#fff;display:flex;align-items:center;justify-content:center}
+.nbtn.ghost{background:rgba(255,255,255,.14)}
+#dots{display:flex;gap:7px;overflow-x:auto;max-width:34vw;padding:6px 2px}
+#dots button{width:12px;height:12px;min-width:12px;border-radius:50%;border:none;background:rgba(255,255,255,.32);cursor:pointer;padding:0}
+#dots button.on{background:var(--blush);transform:scale(1.4)}
+#count{color:#fff;font-size:14px;font-weight:700;white-space:nowrap}
+#bar{position:fixed;top:0;left:0;height:5px;width:0;background:linear-gradient(90deg,var(--rose),var(--gold));z-index:60}
+#music{position:fixed;top:calc(12px + env(safe-area-inset-top));right:12px;z-index:50;border:none;cursor:pointer;width:60px;height:60px;border-radius:50%;background:#fff;font-size:26px;box-shadow:0 8px 24px rgba(0,0,0,.25);display:flex;align-items:center;justify-content:center}
+#music.on{background:var(--gold)}
+/* ============ ANIMACIÓN: solo si hay JS; sin JS todo visible ============ */
+.js .rv{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
+.js .rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.js .rv{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+.hearts{position:absolute;inset:0;pointer-events:none;z-index:1;overflow:hidden}
+.hearts span{position:absolute;font-size:30px;opacity:.55;animation:fl 7s ease-in-out infinite}
+@keyframes fl{0%,100%{transform:translateY(0)}50%{transform:translateY(-30px)}}
+.num{font-size:13px;letter-spacing:3px;color:var(--muted);font-weight:700}
+.slide.dark .num{color:var(--blush)}
+canvas#conf{position:absolute;inset:0;z-index:1;pointer-events:none}
 </style>
 </head>
 <body>
-<div id="progress"></div>
-<div id="hint">Desliza / toca los botones 💖</div>
-<!-- Música: toca empezar para activar (los navegadores bloquean autoplay) -->
-<audio id="bgAudio" loop preload="auto" src="public/audio/nuestra-cancion.mp3"></audio>
+<div id="bar"></div>
+<button id="music" aria-label="Nuestra canción">🎵</button>
+<audio id="song" loop preload="auto" src="audio/nuestra-cancion.mp3"></audio>
 
-<div class="deck-viewport">
-<main class="deck-stage" id="deckStage">
+<main class="deck" id="deck">
 
-<!-- 1 PORTADA -->
-<section class="slide active visible">
-<div class="hearts-bg"><span style="left:8%;top:12%">💖</span><span style="left:90%;top:20%;animation-delay:1s">💕</span><span style="left:5%;top:80%;animation-delay:2s">🌹</span><span style="left:92%;top:75%;animation-delay:.5s">✨</span></div>
-<div class="slide-inner">
-<div class="text-col">
-<div class="reveal"><span class="num">01 / 14</span><span class="brand">KATHERINE &amp; MOISÉS</span></div>
-<div class="reveal"><span class="badge"><span class="dot"></span> 7 MESES JUNTOS</span></div>
-<h1 class="reveal cover-title">Nuestro<br><em>amor</em> 💖</h1>
-<p class="reveal script">mi amorcito, mi niña hermosa, mi eternidad</p>
-<p class="reveal lead">Hace 7 meses conocí al amor de mi vida. Esta historia es para ti, Katherine.</p>
-<div class="reveal pill-row"><span class="pill">💑 7 meses</span><span class="pill">♾️ para siempre</span><span class="pill">🌹 te amo</span></div>
-</div>
-<div class="reveal photo-wrap"><img src="public/images/WhatsApp Image 2026-09-11 at 22.56.14 (1).jpeg" alt="Nosotros"><div class="photo-caption">Toca ▶ para empezar ✨</div></div>
-</div>
-</section>
+  <!-- 1 PORTADA -->
+  <section class="slide dark" data-title="Portada">
+    <div class="hero-bg"><img src="images/foto-01.jpeg" alt="Katherine y Moisés" fetchpriority="high"></div>
+    <div class="wrap">
+      <p class="rv num">01 / 15</p>
+      <p class="rv" style="margin:12px 0"><span class="badge"><i></i>7 MESES JUNTOS</span></p>
+      <h1 class="rv big" style="color:#fff">Nuestro<br><em style="color:var(--blush)">amor</em> 💖</h1>
+      <p class="rv script" style="color:var(--blush)">mi amorcito, mi niña hermosa, mi eternidad</p>
+      <p class="rv lead" style="color:#f5e3d3">Katherine &amp; Moisés — hace 7 meses empezó nuestra historia.</p>
+      <div class="rv cta-row">
+        <button class="btn rose" data-go="1">Empezar ↓</button>
+        <button class="btn ghost" id="playBtn">▶ Nuestra canción</button>
+      </div>
+    </div>
+  </section>
 
-<!-- 2 HISTORIA -->
-<section class="slide">
-<div class="slide-inner">
-<div class="reveal photo-wrap straight"><img src="public/images/WhatsApp Image 2026-09-11 at 22.56.14 (2).jpeg" alt="Recuerdo"><div class="photo-caption">donde todo empezó</div></div>
-<div class="text-col">
-<div class="reveal"><span class="num">02 / 14</span><span class="brand">NUESTRA HISTORIA</span></div>
-<div class="reveal eyebrow">Hace 7 meses</div>
-<h2 class="reveal" style="font-size:96px">Conocí a mi<br>persona favorita</h2>
-<p class="reveal lead">Eres mi confidente, mi cómplice y mi mejor amigo. Contigo descubrí lo que significa amar profundamente.</p>
-<div class="reveal pill-row"><span class="pill">💖 mi amorcito</span><span class="pill">👧 mi niña hermosa</span></div>
-</div>
-</div>
-</section>
+  <!-- 2 HISTORIA -->
+  <section class="slide" data-title="Historia">
+    <div class="wrap">
+      <p class="rv num">02 / 15</p>
+      <div class="rv ph tall"><img src="images/foto-02.jpeg" alt="Donde todo empezó" loading="lazy"><span class="cap">donde todo empezó</span></div>
+      <p class="rv eyebrow" style="margin-top:18px">Hace 7 meses</p>
+      <h2 class="rv big">Mi persona<br><em>favorita</em></h2>
+      <p class="rv lead">Eres mi confidente, mi cómplice y mi mejor amigo. Contigo descubrí lo que significa amar profundamente.</p>
+    </div>
+  </section>
 
-<!-- 3 -->
-<section class="slide">
-<div class="slide-inner">
-<div class="text-col">
-<div class="reveal"><span class="num">03 / 14</span><span class="brand">MOMENTOS</span></div>
-<div class="reveal eyebrow">Gracias por ser especial</div>
-<h2 class="reveal" style="font-size:88px">Tu luz ilumina<br>cada día ☀️</h2>
-<p class="reveal lead">Gracias por tu luz y tu energía. Te amo demasiado, hoy más que ayer y menos que mañana.</p>
-</div>
-<div class="reveal duo">
-<div class="photo-wrap"><img src="public/images/WhatsApp Image 2026-09-11 at 22.56.14.jpeg" alt=""><div class="photo-caption">te amo</div></div>
-<div class="photo-wrap"><img src="public/images/WhatsApp Image 2026-09-11 at 22.56.15 (1).jpeg" alt=""><div class="photo-caption">mi todo</div></div>
-</div>
-</div>
-</section>
+  <!-- 3 -->
+  <section class="slide" data-title="Mi amorcito">
+    <div class="wrap">
+      <p class="rv num">03 / 15</p>
+      <div class="rv ph tall"><img src="images/foto-03.jpeg" alt="Mi amorcito" loading="lazy"><span class="cap">mi amorcito</span></div>
+      <p class="rv eyebrow" style="margin-top:18px">Gracias por ser especial</p>
+      <h2 class="rv big">Tu luz ilumina<br><em>cada día</em> ☀️</h2>
+      <p class="rv lead">Gracias por tu luz y tu energía. Te amo demasiado, hoy más que ayer.</p>
+    </div>
+  </section>
 
-<!-- 4 -->
-<section class="slide">
-<div class="slide-inner">
-<div class="reveal duo">
-<div class="photo-wrap"><img src="public/images/WhatsApp Image 2026-09-11 at 22.56.15 (2).jpeg" alt=""><div class="photo-caption">hermosa</div></div>
-<div class="photo-wrap"><img src="public/images/WhatsApp Image 2026-09-11 at 22.56.15 (3).jpeg" alt=""><div class="photo-caption">siempre tú</div></div>
-</div>
-<div class="text-col">
-<div class="reveal"><span class="num">04 / 14</span><span class="brand">MOMENTOS</span></div>
-<div class="reveal eyebrow">Eres hermosa</div>
-<h2 class="reveal" style="font-size:88px">La mujer más<br>hermosa 🌹</h2>
-<p class="reveal lead">Por dentro y por fuera. Siempre estaré para ti, en los buenos momentos y en los desafíos.</p>
-</div>
-</div>
-</section>
+  <!-- 4 -->
+  <section class="slide" data-title="Te amo">
+    <div class="wrap">
+      <p class="rv num">04 / 15</p>
+      <div class="rv ph tall"><img src="images/foto-04.jpeg" alt="Te amo demasiado" loading="lazy"><span class="cap">te amo demasiado</span></div>
+      <h2 class="rv big" style="margin-top:18px">Por toda la<br><em>eternidad</em> ♾️</h2>
+      <p class="rv lead">Cada día te quiero más que el anterior.</p>
+    </div>
+  </section>
 
-<!-- 5 -->
-<section class="slide">
-<div class="slide-inner">
-<div class="text-col">
-<div class="reveal"><span class="num">05 / 14</span><span class="brand">DE LA MANO</span></div>
-<div class="reveal eyebrow">Juntos por la eternidad</div>
-<h2 class="reveal" style="font-size:88px">De la mano,<br>por siempre 🤝</h2>
-<p class="reveal lead">Cada día nos conocemos más y nuestro amor crece y se fortalece.</p>
-<div class="reveal pill-row"><span class="pill">🤝 juntos</span><span class="pill">💪 fuertes</span></div>
-</div>
-<div class="reveal duo">
-<div class="photo-wrap"><img src="public/images/WhatsApp Image 2026-09-11 at 22.56.15.jpeg" alt=""><div class="photo-caption">mi mano</div></div>
-<div class="photo-wrap"><img src="public/images/WhatsApp Image 2026-09-11 at 22.56.16 (1).jpeg" alt=""><div class="photo-caption">tu mano</div></div>
-</div>
-</div>
-</section>
+  <!-- 5 DÚO -->
+  <section class="slide" data-title="Hermosa">
+    <div class="wrap">
+      <p class="rv num">05 / 15</p>
+      <p class="rv eyebrow">Eres hermosa</p>
+      <h2 class="rv big">La más hermosa<br><em>del universo</em> 🌹</h2>
+      <div class="rv duo">
+        <div class="ph"><img src="images/foto-05.jpeg" alt="" loading="lazy"><span class="cap">por dentro</span></div>
+        <div class="ph"><img src="images/foto-06.jpeg" alt="" loading="lazy"><span class="cap">por fuera</span></div>
+      </div>
+      <p class="rv lead">Por dentro y por fuera. Siempre estaré para ti.</p>
+    </div>
+  </section>
 
-<!-- 6 -->
-<section class="slide">
-<div class="slide-inner">
-<div class="reveal duo">
-<div class="photo-wrap"><img src="public/images/WhatsApp Image 2026-09-11 at 22.56.16 (2).jpeg" alt=""><div class="photo-caption">aprendemos</div></div>
-<div class="photo-wrap"><img src="public/images/WhatsApp Image 2026-09-11 at 22.56.16 (3).jpeg" alt=""><div class="photo-caption">crecemos</div></div>
-</div>
-<div class="text-col">
-<div class="reveal"><span class="num">06 / 14</span><span class="brand">CRECEMOS</span></div>
-<div class="reveal eyebrow">Aunque tengamos diferencias</div>
-<h2 class="reveal" style="font-size:84px">Ser felices<br>amándonos 😄</h2>
-<p class="reveal lead">Aprendemos a crecer juntos y ser mejores cada día. Nuestro amor es único y mágico.</p>
-</div>
-</div>
-</section>
+  <!-- 6 -->
+  <section class="slide dark" data-title="De la mano">
+    <div class="hearts"><span style="left:10%;top:15%">💖</span><span style="left:85%;top:25%">🌹</span><span style="left:12%;top:80%">💕</span><span style="left:88%;top:75%">✨</span></div>
+    <div class="wrap">
+      <p class="rv num">06 / 15</p>
+      <div class="rv ph tall"><img src="images/foto-07.jpeg" alt="De la mano" loading="lazy"><span class="cap">de la mano</span></div>
+      <h2 class="rv big" style="color:#fff;margin-top:18px">Juntos por<br><em style="color:var(--blush)">siempre</em> 🤝</h2>
+      <p class="rv lead">De la mano, enfrentando todo lo que venga.</p>
+    </div>
+  </section>
 
-<!-- 7 -->
-<section class="slide">
-<div class="slide-inner">
-<div class="text-col">
-<div class="reveal"><span class="num">07 / 14</span><span class="brand">MI NIÑA</span></div>
-<div class="reveal eyebrow">Nuestro amor</div>
-<h2 class="reveal" style="font-size:88px">Mi niña<br>hermosa 👧💖</h2>
-<p class="reveal lead">Eres mi luz en los días oscuros, mi razón para sonreír, el amor de mi vida.</p>
-</div>
-<div class="reveal duo">
-<div class="photo-wrap"><img src="public/images/WhatsApp Image 2026-09-11 at 22.56.16 (4).jpeg" alt=""><div class="photo-caption">mi luz</div></div>
-<div class="photo-wrap"><img src="public/images/WhatsApp Image 2026-09-11 at 22.56.16 (5).jpeg" alt=""><div class="photo-caption">mi sonrisa</div></div>
-</div>
-</div>
-</section>
+  <!-- 7 DÚO -->
+  <section class="slide" data-title="Cada día">
+    <div class="wrap">
+      <p class="rv num">07 / 15</p>
+      <p class="rv eyebrow">Cada día</p>
+      <h2 class="rv big">Nuestro amor<br><em>crece</em> 🌱</h2>
+      <div class="rv duo">
+        <div class="ph"><img src="images/foto-08.jpeg" alt="" loading="lazy"><span class="cap">cada día</span></div>
+        <div class="ph"><img src="images/foto-09.jpeg" alt="" loading="lazy"><span class="cap">más fuerte</span></div>
+      </div>
+      <p class="rv lead">Cada día nos conocemos más y nos fortalecemos.</p>
+    </div>
+  </section>
 
-<!-- 8 -->
-<section class="slide">
-<div class="slide-inner">
-<div class="reveal duo">
-<div class="photo-wrap"><img src="public/images/WhatsApp Image 2026-09-11 at 22.56.16.jpeg" alt=""><div class="photo-caption">mi vida</div></div>
-<div class="photo-wrap"><img src="public/images/WhatsApp Image 2026-09-11 at 22.56.17 (1).jpeg" alt=""><div class="photo-caption">mi futuro</div></div>
-</div>
-<div class="text-col">
-<div class="reveal"><span class="num">08 / 14</span><span class="brand">MI VIDA</span></div>
-<div class="reveal eyebrow">Contigo siempre</div>
-<h2 class="reveal" style="font-size:88px">Contigo quiero<br>estar por siempre ♾️</h2>
-<p class="reveal lead">Construyendo nuestro futuro juntos. Eres mi eternidad, mi hogar y mi refugio.</p>
-</div>
-</div>
-</section>
+  <!-- 8 DÚO -->
+  <section class="slide" data-title="Diferencias">
+    <div class="wrap">
+      <p class="rv num">08 / 15</p>
+      <p class="rv eyebrow">Aunque tengamos diferencias</p>
+      <h2 class="rv big">Aprendemos a<br><em>crecer juntos</em> 😄</h2>
+      <div class="rv duo">
+        <div class="ph"><img src="images/foto-10.jpeg" alt="" loading="lazy"><span class="cap">aprendemos</span></div>
+        <div class="ph"><img src="images/foto-11.jpeg" alt="" loading="lazy"><span class="cap">crecemos</span></div>
+      </div>
+      <p class="rv lead">Ser felices amándonos es nuestro propósito.</p>
+    </div>
+  </section>
 
-<!-- 9 -->
-<section class="slide">
-<div class="slide-inner">
-<div class="text-col">
-<div class="reveal"><span class="num">09 / 14</span><span class="brand">MI ETERNIDAD</span></div>
-<div class="reveal eyebrow">Te adoro</div>
-<h2 class="reveal" style="font-size:84px">Más de lo que las<br>palabras dicen 💌</h2>
-<p class="reveal lead">7 meses de amor, risas, aprendizajes y crecimiento juntos como pareja.</p>
-<div class="reveal pill-row"><span class="pill">💌 te adoro</span><span class="pill">👑 mi princesa</span></div>
-</div>
-<div class="reveal duo">
-<div class="photo-wrap"><img src="public/images/WhatsApp Image 2026-09-11 at 22.56.17 (2).jpeg" alt=""><div class="photo-caption">mi eternidad</div></div>
-<div class="photo-wrap"><img src="public/images/WhatsApp Image 2026-09-11 at 22.56.17 (3).jpeg" alt=""><div class="photo-caption">mi reina</div></div>
-</div>
-</div>
-</section>
+  <!-- 9 DÚO -->
+  <section class="slide" data-title="Mi niña">
+    <div class="wrap">
+      <p class="rv num">09 / 15</p>
+      <p class="rv eyebrow">Nuestro amor es único</p>
+      <h2 class="rv big">Mi niña<br><em>hermosa</em> 👧💖</h2>
+      <div class="rv duo">
+        <div class="ph"><img src="images/foto-12.jpeg" alt="" loading="lazy"><span class="cap">mi luz</span></div>
+        <div class="ph"><img src="images/foto-13.jpeg" alt="" loading="lazy"><span class="cap">mi sonrisa</span></div>
+      </div>
+      <p class="rv lead">Mi luz en los días oscuros y mi razón para sonreír.</p>
+    </div>
+  </section>
 
-<!-- 10 COLLAGE FINAL FOTOS -->
-<section class="slide">
-<div class="slide-inner">
-<div class="reveal photo-wrap straight" style="flex:1"><img src="public/images/WhatsApp Image 2026-09-11 at 22.56.17 (4).jpeg" alt=""><div class="photo-caption">7 meses de nosotros</div></div>
-<div class="reveal photo-wrap" style="flex:1"><img src="public/images/WhatsApp Image 2026-09-11 at 22.56.17.jpeg" alt=""><div class="photo-caption">mi princesa 👑</div></div>
-<div class="text-col" style="flex:.9">
-<div class="reveal"><span class="num">10 / 14</span><span class="brand">NOSOTROS</span></div>
-<div class="reveal eyebrow">7 meses de nosotros</div>
-<h2 class="reveal" style="font-size:82px">Eres mi princesa,<br>mi reina, mi todo</h2>
-<p class="reveal lead">Mereces todo el amor y felicidad del mundo.</p>
-</div>
-</div>
-</section>
+  <!-- 10 DÚO -->
+  <section class="slide" data-title="Mi vida">
+    <div class="wrap">
+      <p class="rv num">10 / 15</p>
+      <p class="rv eyebrow">Eres mi vida</p>
+      <h2 class="rv big">Contigo por<br><em>siempre</em> 🏠</h2>
+      <div class="rv duo">
+        <div class="ph"><img src="images/foto-14.jpeg" alt="" loading="lazy"><span class="cap">mi vida</span></div>
+        <div class="ph"><img src="images/foto-15.jpeg" alt="" loading="lazy"><span class="cap">mi hogar</span></div>
+      </div>
+      <p class="rv lead">Mi inspiración constante y mi refugio.</p>
+    </div>
+  </section>
 
-<!-- 11 MENSAJES -->
-<section class="slide">
-<div class="slide-inner" style="flex-direction:column;align-items:stretch;justify-content:center">
-<div class="reveal"><span class="num" style="position:static">11 / 14</span></div>
-<div class="reveal eyebrow">Cartas para ti</div>
-<h2 class="reveal" style="font-size:84px">Lo que mi corazón te dice</h2>
-<div class="reveal cards3">
-<div class="mcard"><div class="ico">💖</div><h3>Mi amorcito</h3><p>Eres mi persona favorita, mi confidente y mi mejor amigo. Amar contigo es mi mejor aventura.</p></div>
-<div class="mcard"><div class="ico">👧</div><h3>Mi niña hermosa</h3><p>Tu sonrisa ilumina mis días oscuros. Qué afortunado soy de tenerte.</p></div>
-<div class="mcard"><div class="ico">♾️</div><h3>Mi eternidad</h3><p>Contigo quiero construir un futuro lleno de amor. Eres mi hogar.</p></div>
-</div>
-</div>
-</section>
+  <!-- 11 DÚO -->
+  <section class="slide" data-title="Eternidad">
+    <div class="wrap">
+      <p class="rv num">11 / 15</p>
+      <p class="rv eyebrow">Mi eternidad</p>
+      <h2 class="rv big">Mi siempre,<br><em>mi para siempre</em> 💌</h2>
+      <div class="rv duo">
+        <div class="ph"><img src="images/foto-16.jpeg" alt="" loading="lazy"><span class="cap">mi eternidad</span></div>
+        <div class="ph"><img src="images/foto-17.jpeg" alt="" loading="lazy"><span class="cap">te adoro</span></div>
+      </div>
+      <p class="rv lead">Más de lo que las palabras pueden expresar.</p>
+    </div>
+  </section>
 
-<!-- 12 PROPÓSITO -->
-<section class="slide" style="background:#18060d">
-<div class="slide-inner" style="flex-direction:column;justify-content:center;text-align:center;color:var(--cream)">
-<div class="reveal eyebrow" style="color:var(--blush)">Nuestro propósito</div>
-<p class="reveal quote-big" style="color:var(--cream)">“Ser felices amándonos<br>el uno al otro” 🌟</p>
-<p class="reveal lead" style="color:var(--cream-2);max-width:1000px;margin:24px auto 0">Juntos somos más fuertes, más valientes y más completos. Nuestra risa es la mejor música.</p>
-<div class="reveal pill-row" style="justify-content:center"><span class="pill">😄 alegría</span><span class="pill">🌟 crecimiento</span><span class="pill">🎯 propósito</span></div>
-<div class="reveal" style="color:var(--muted);font-size:26px;letter-spacing:4px;margin-top:12px">12 / 14 — KATHERINE &amp; MOISÉS</div>
-</div>
-</section>
+  <!-- 12 -->
+  <section class="slide" data-title="Princesa">
+    <div class="wrap">
+      <p class="rv num">12 / 15</p>
+      <div class="rv ph tall"><img src="images/foto-18.jpeg" alt="Mi princesa" loading="lazy"><span class="cap">mi princesa 👑</span></div>
+      <h2 class="rv big" style="margin-top:18px">Mi reina,<br><em>mi todo</em> 👑</h2>
+      <p class="rv lead">7 meses de amor, risas y crecimiento. Mereces toda la felicidad del mundo.</p>
+    </div>
+  </section>
 
-<!-- 13 PROMESA -->
-<section class="slide">
-<div class="slide-inner" style="flex-direction:column;justify-content:center;text-align:center">
-<div class="reveal"><span class="num" style="position:static">13 / 14</span></div>
-<div class="reveal badge"><span class="dot"></span> MI PROMESA</div>
-<h2 class="reveal" style="font-size:92px;margin:24px 0">Siempre estaré<br>para <em style="color:var(--wine-2)">ti</em> 🤍</h2>
-<p class="reveal lead" style="max-width:1100px;margin:0 auto">En los buenos momentos y en los desafíos. De la mano, por toda la eternidad.</p>
-</div>
-</section>
+  <!-- 13 CARTAS -->
+  <section class="slide" data-title="Cartas">
+    <div class="wrap">
+      <p class="rv num">13 / 15</p>
+      <p class="rv eyebrow">Cartas para ti</p>
+      <h2 class="rv big">Lo que mi corazón<br><em>te dice</em></h2>
+      <div class="cards">
+        <div class="rv mcard"><div class="ico">💖</div><h3>Mi amorcito</h3><p>Eres mi persona favorita, mi confidente y mi mejor amigo.</p></div>
+        <div class="rv mcard"><div class="ico">👧</div><h3>Mi niña hermosa</h3><p>Tu sonrisa ilumina mis días oscuros.</p></div>
+        <div class="rv mcard"><div class="ico">♾️</div><h3>Mi eternidad</h3><p>Contigo quiero construir nuestro futuro. Eres mi hogar.</p></div>
+      </div>
+    </div>
+  </section>
 
-<!-- 14 FINAL -->
-<section class="slide" style="background:linear-gradient(135deg,#5c1023,#8d1b3d 60%,#e6397a)">
-<div class="hearts-bg" id="finalHearts"><span style="left:10%;top:20%">💖</span><span style="left:80%;top:15%">💕</span><span style="left:15%;top:75%">🌹</span><span style="left:85%;top:70%">💘</span></div>
-<div class="slide-inner" style="flex-direction:column;justify-content:center;text-align:center;color:#fff">
-<div class="reveal" style="font-size:30px;letter-spacing:6px">14 / 14 — PARA SIEMPRE</div>
-<h2 class="reveal" style="font-size:150px;color:#fff">Te amo,<br>Katherine 💖</h2>
-<p class="reveal script" style="color:var(--cream)">mi siempre, mi para siempre</p>
-<p class="reveal" style="font-size:32px;opacity:.9">Gracias por estos 7 meses. Vamos por toda una vida.</p>
-<div class="reveal" style="font-size:28px">— Moisés 💌</div>
-</div>
-</section>
+  <!-- 14 PROMESA -->
+  <section class="slide dark" data-title="Promesa">
+    <div class="wrap" style="text-align:center">
+      <p class="rv num">14 / 15</p>
+      <p class="rv" style="margin:12px 0"><span class="badge"><i></i>MI PROMESA</span></p>
+      <h2 class="rv big" style="color:#fff">Siempre estaré<br><em style="color:var(--blush)">para ti</em> 🤍</h2>
+      <p class="rv lead" style="color:#f5e3d3">En los buenos momentos y en los desafíos. De la mano, por toda la eternidad.</p>
+    </div>
+  </section>
+
+  <!-- 15 FINAL -->
+  <section class="slide" data-title="Te amo" style="background:linear-gradient(160deg,#5c1023,#8d1b3d 55%,#e6397a)">
+    <canvas id="conf"></canvas>
+    <div class="hearts"><span style="left:8%;top:12%">💖</span><span style="left:88%;top:18%">💕</span><span style="left:10%;top:78%">🌹</span><span style="left:86%;top:74%">💘</span></div>
+    <div class="wrap" style="text-align:center">
+      <p class="rv num" style="color:var(--blush)">15 / 15 — PARA SIEMPRE</p>
+      <h2 class="rv big" style="color:#fff;margin-top:10px">Te amo,<br>Katherine 💖</h2>
+      <p class="rv script" style="color:var(--cream)">mi siempre, mi para siempre</p>
+      <p class="rv lead" style="color:#ffe9d6">Gracias por estos 7 meses. Vamos por toda una vida.</p>
+      <p class="rv" style="color:#fff;font-size:18px;margin-top:8px">— Moisés 💌</p>
+      <div class="rv cta-row" style="justify-content:center">
+        <button class="btn ghost" data-go="0">↺ Revivir</button>
+      </div>
+    </div>
+  </section>
 
 </main>
-</div>
 
-<!-- Controles grandes, táctiles, fuera del stage para que funcionen en celular -->
-<nav class="deck-controls" aria-label="Controles">
-<button class="cbtn ghost" id="prevBtn" aria-label="Anterior">◀</button>
-<button class="cbtn" id="nextBtn" aria-label="Siguiente">▶</button>
-<div id="dots" aria-label="Ir a diapositiva"></div>
-<span id="counter">1 / 14</span>
-<button class="cbtn ghost music" id="musicBtn" aria-label="Música">🎵</button>
+<nav class="controls" aria-label="Controles">
+  <button class="nbtn ghost" id="prev" aria-label="Anterior">◀</button>
+  <button class="nbtn" id="next" aria-label="Siguiente">▶</button>
+  <div id="dots"></div>
+  <span id="count">1 / 15</span>
 </nav>
 
 <script>
-/* Controlador estilo frontend-slides: stage fijo 1920x1080 escalado completo, swipe + botones + dots */
-class SlidePresentation{
-  constructor(){
-    this.slides=[...document.querySelectorAll('.slide')];
-    this.i=0; this.stage=document.getElementById('deckStage');
-    this.counter=document.getElementById('counter');
-    this.progress=document.getElementById('progress');
-    this.dotsBox=document.getElementById('dots');
-    this.audio=document.getElementById('bgAudio');
-    this.musicBtn=document.getElementById('musicBtn');
-    this.buildDots(); this.scale(); this.show(0);
-    window.addEventListener('resize',()=>this.scale());
-    document.getElementById('prevBtn').onclick=()=>{this.prev();this.musicTry()};
-    document.getElementById('nextBtn').onclick=()=>{this.next();this.musicTry()};
-    this.musicBtn.onclick=()=>this.toggleMusic();
-    document.addEventListener('keydown',e=>{
-      if(e.key==='ArrowRight'||e.key===' '){e.preventDefault();this.next()}
-      if(e.key==='ArrowLeft'){this.prev()}
-    });
-    // swipe táctil
-    let sx=0,ex=0;
-    const vp=document.querySelector('.deck-viewport');
-    vp.addEventListener('touchstart',e=>{sx=e.changedTouches[0].clientX},{passive:true});
-    vp.addEventListener('touchend',e=>{ex=e.changedTouches[0].clientX;const d=sx-ex;
-      if(d>50)this.next();else if(d<-50)this.prev();this.musicTry()},{passive:true});
-    // tap en laterales en móvil
-    vp.addEventListener('click',e=>{
-      const x=e.clientX;
-      if(x<window.innerWidth*0.2)this.prev();
-      else if(x>window.innerWidth*0.8)this.next();
-    });
-    // autoplay suave cada 7s, se reinicia al interactuar
-    this.auto=setInterval(()=>this.next(),7000);
-    ['click','touchstart'].forEach(ev=>document.addEventListener(ev,()=>{
-      clearInterval(this.auto);this.auto=setInterval(()=>this.next(),7000);
-    },{passive:true}));
-    setTimeout(()=>{const h=document.getElementById('hint');if(h)h.style.display='none'},5000);
+(function(){
+  var deck=document.getElementById('deck');
+  var slides=Array.prototype.slice.call(deck.querySelectorAll('.slide'));
+  var dots=document.getElementById('dots'), count=document.getElementById('count'), bar=document.getElementById('bar');
+  var cur=0;
+  // Dots
+  slides.forEach(function(_,i){
+    var b=document.createElement('button');
+    b.setAttribute('aria-label','Ir a '+(i+1));
+    b.addEventListener('click',function(e){e.stopPropagation();go(i);});
+    dots.appendChild(b);
+  });
+  function paint(){
+    var db=dots.children;
+    for(var i=0;i<db.length;i++)db[i].classList.toggle('on',i===cur);
+    count.textContent=(cur+1)+' / '+slides.length;
+    bar.style.width=((cur+1)/slides.length*100)+'%';
   }
-  buildDots(){
-    this.slides.forEach((_,k)=>{
-      const b=document.createElement('button');
-      b.setAttribute('aria-label','Ir a '+(k+1));
-      b.onclick=(e)=>{e.stopPropagation();this.show(k)};
-      this.dotsBox.appendChild(b);
-    });
+  function go(i){
+    cur=(i+slides.length)%slides.length;
+    slides[cur].scrollIntoView({behavior:'smooth',block:'start'});
+    paint();
   }
-  scale(){
-    const f=Math.min(window.innerWidth/1920,window.innerHeight/1080);
-    const x=(window.innerWidth-1920*f)/2, y=(window.innerHeight-1080*f)/2;
-    this.stage.style.transform=`translate(${x}px, ${y}px) scale(${f})`;
+  document.getElementById('prev').addEventListener('click',function(){go(cur-1)});
+  document.getElementById('next').addEventListener('click',function(){go(cur+1)});
+  document.querySelectorAll('[data-go]').forEach(function(b){
+    b.addEventListener('click',function(){go(parseInt(b.getAttribute('data-go'),10))});
+  });
+  document.addEventListener('keydown',function(e){
+    if(e.key==='ArrowDown'||e.key==='ArrowRight'||e.key===' '){e.preventDefault();go(cur+1)}
+    if(e.key==='ArrowUp'||e.key==='ArrowLeft'){e.preventDefault();go(cur-1)}
+  });
+  // Sección activa por scroll
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(en){
+        if(en.isIntersecting){cur=slides.indexOf(en.target);paint();}
+      });
+    },{root:deck,threshold:.55});
+    slides.forEach(function(s){io.observe(s)});
+    // Revelado progresivo (mejora: sin JS todo ya es visible)
+    var ro=new IntersectionObserver(function(es){
+      es.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');ro.unobserve(en.target)}});
+    },{root:deck,threshold:.15});
+    document.querySelectorAll('.rv').forEach(function(el){ro.observe(el)});
   }
-  show(k){
-    this.i=(k+this.slides.length)%this.slides.length;
-    this.slides.forEach((s,j)=>{
-      s.classList.toggle('active',j===this.i);
-      s.classList.toggle('visible',j===this.i);
-    });
-    [...this.dotsBox.children].forEach((d,j)=>d.classList.toggle('on',j===this.i));
-    this.counter.textContent=(this.i+1)+' / '+this.slides.length;
-    this.progress.style.width=((this.i+1)/this.slides.length*100)+'%';
-    if(this.i===this.slides.length-1)this.rainHearts();
+  paint();
+  // Música
+  var song=document.getElementById('song'), mus=document.getElementById('music'), playBtn=document.getElementById('playBtn');
+  function play(){song.play().then(function(){mus.classList.add('on');mus.textContent='⏸️'}).catch(function(){})}
+  mus.addEventListener('click',function(){
+    if(song.paused){play()}else{song.pause();mus.classList.remove('on');mus.textContent='🎵'}
+  });
+  if(playBtn)playBtn.addEventListener('click',play);
+  deck.addEventListener('touchstart',function(){if(song.paused)play()},{passive:true,once:true});
+  // Confeti de corazones en el final
+  var cv=document.getElementById('conf'), ctx=cv.getContext('2d'), parts=[], run=false;
+  var EM=['💖','💕','🌹','💘','✨'];
+  function size(){var r=cv.parentElement.getBoundingClientRect();cv.width=r.width;cv.height=r.height}
+  function burst(){
+    size();
+    for(var i=0;i<70;i++)parts.push({x:Math.random()*cv.width,y:-20-Math.random()*200,s:18+Math.random()*22,v:1.5+Math.random()*2.5,e:EM[i%EM.length],r:Math.random()*6.28});
+    if(!run){run=true;tick()}
   }
-  next(){this.show(this.i+1)} prev(){this.show(this.i-1)}
-  musicTry(){ if(this.audio&&this.audio.paused){this.audio.play().catch(()=>{});this.musicBtn.classList.add('on')} }
-  toggleMusic(){
-    if(!this.audio)return;
-    if(this.audio.paused){this.audio.play().catch(()=>{});this.musicBtn.classList.add('on');this.musicBtn.textContent='⏸️'}
-    else{this.audio.pause();this.musicBtn.classList.remove('on');this.musicBtn.textContent='🎵'}
+  function tick(){
+    ctx.clearRect(0,0,cv.width,cv.height);ctx.font='24px serif';
+    parts.forEach(function(p){p.y+=p.v;p.r+=.02;ctx.save();ctx.translate(p.x,p.y);ctx.rotate(Math.sin(p.r)*.3);ctx.fillText(p.e,0,0);ctx.restore()});
+    parts=parts.filter(function(p){return p.y<cv.height+40});
+    if(parts.length)requestAnimationFrame(tick);else{run=false;ctx.clearRect(0,0,cv.width,cv.height)}
   }
-  rainHearts(){
-    const box=document.getElementById('finalHearts'); if(!box||box.dataset.done)return; box.dataset.done='1';
-    for(let k=0;k<24;k++){
-      const s=document.createElement('span');
-      s.textContent=['💖','💕','🌹','💘','✨'][k%5];
-      s.style.left=Math.random()*90+'%'; s.style.top='-5%';
-      s.style.animation='fall 3.5s ease-in forwards'; s.style.animationDelay=(k*0.15)+'s';
-      box.appendChild(s);
-    }
-    const st=document.createElement('style');
-    st.textContent='@keyframes fall{to{transform:translateY(1150px) rotate(30deg);opacity:0}}';
-    document.head.appendChild(st);
-  }
-}
-new SlidePresentation();
+  var fio=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting)burst()})},{root:deck,threshold:.5});
+  fio.observe(slides[slides.length-1]);
+  window.addEventListener('resize',size);
+})();
 </script>
 </body>
 </html>
