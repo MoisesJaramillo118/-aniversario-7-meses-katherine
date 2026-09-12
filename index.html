@@ -16,6 +16,8 @@
 
         <div class="slideshow">
             <!-- Slides will be generated via JS for simplicity, but we can also hardcode -->
+            <button id="prevBtn" class="nav-button prev">&#9664;</button>
+            <button id="nextBtn" class="nav-button next">&#9654;</button>
         </div>
 
         <div class="messages">
@@ -234,6 +236,18 @@
                 resetInterval();
             }
         }
+
+        // Navigation buttons
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        prevBtn.addEventListener('click', () => {
+            showPrevSlide();
+            resetInterval();
+        });
+        nextBtn.addEventListener('click', () => {
+            showNextSlide();
+            resetInterval();
+        });
 
         // Optional: keyboard arrows
         document.addEventListener('keydown', e => {
