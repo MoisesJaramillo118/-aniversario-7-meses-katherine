@@ -42,9 +42,9 @@ export const MessageCards: React.FC = () => {
       transition={{ duration: 0.8, delay: 0.3 }}
       className="space-y-8"
     >
-      <h2 className="text-2xl font-bold text-center mb-8 bg-gradient-to-r from-pink-500 to-purple-600 bg-clip-text text-transparent playfair-display">
-        Nuestro Viaje Juntos
-      </h2>
+      <div className="section-title">
+        <h2>Nuestro Viaje Juntos</h2>
+      </div>
 
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {messages.map((message, index) => (
@@ -52,18 +52,18 @@ export const MessageCards: React.FC = () => {
             key={index}
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.6, delay: index * 0.1 }}
-            className="relative bg-white/80 backdrop-blur-sm rounded-2xl p-6 hover:shadow-xl transition-shadow duration-300 border border-white/20"
+            transition={{ duration: 0.6, delay: index * 0.08 }}
+            className="card"
           >
             <div className="flex items-center mb-4">
-              <div className="w-10 h-10 bg-gradient-to-r from-pink-500 to-purple-600 rounded-xl flex items-center justify-center text-white font-bold mr-3">
+              <div className="card-icon">
                 {message.icon}
               </div>
-              <h3 className="text-xl font-medium text-gray-800 playfair-display">
+              <h3 className="card-title">
                 {message.title}
               </h3>
             </div>
-            <p className="text-gray-700 leading-relaxed poppins">
+            <p className="card-text">
               {message.text}
             </p>
           </motion.div>

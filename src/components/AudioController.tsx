@@ -75,9 +75,9 @@ export const AudioController: React.FC = () => {
   return (
     <motion.div
       onClick={toggleAudio}
-      whileHover={{ scale: 1.1 }}
+      whileHover={{ scale: 1.1, rotate: 2 }}
       whileTap={{ scale: 0.9 }}
-      className="w-14 h-14 bg-white/80 backdrop-blur-sm rounded-full flex flex-col items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 group"
+      className="w-16 h-16 bg-white/80 backdrop-blur-sm rounded-full flex flex-col items-center justify-center shadow-lg hover:shadow-xl transition-all duration-400 group"
     >
       {/* Audio element */}
       <audio
@@ -91,13 +91,13 @@ export const AudioController: React.FC = () => {
       </audio>
 
       {/* Spotify-like visualization */}
-      <motion.div className="flex space-x-1 mt-2">
+      <motion.div className="flex space-x-2 mt-3">
         {[1, 2, 3, 4, 5].map((i) => (
           <motion.div
             key={i}
-            className={`w-1 bg-white/20 rounded transition-all duration-100 ${
+            className={`w-2 bg-white/20 rounded transition-all duration-100 ${
               (isPlaying || userHasInteracted) && volumeLevel > 0
-                ? `h-${volumeLevel + (i * 5)} bg-gradient-to-t from-pink-400 to-purple-500`
+                ? `h-${volumeLevel + (i * 4)} bg-gradient-to-t from-pink-400 to-purple-500`
                 : `h-2 bg-white/20`
             }`}
           />
@@ -109,7 +109,7 @@ export const AudioController: React.FC = () => {
         {isPlaying ? (
           <motion.svg
             whileHover={{ rotate: 90 }}
-            className="w-5 h-5 text-pink-500"
+            className="w-6 h-6 text-pink-500"
             viewBox="0 0 24 24"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
@@ -119,7 +119,7 @@ export const AudioController: React.FC = () => {
         ) : (
           <motion.svg
             whileHover={{ scale: 1.2 }}
-            className="w-5 h-5 text-pink-500"
+            className="w-6 h-6 text-pink-500"
             viewBox="0 0 24 24"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"

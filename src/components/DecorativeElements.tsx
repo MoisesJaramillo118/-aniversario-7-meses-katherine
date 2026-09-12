@@ -20,7 +20,7 @@ export const DecorativeElements: React.FC = () => {
       el.style.position = 'absolute';
 
       // Random size
-      const size = Math.random() * 100 + 50; // 50-150px
+      const size = Math.random() * 80 + 40; // 40-120px
       el.style.width = `${size}px`;
       el.style.height = `${size}px`;
 
@@ -29,29 +29,29 @@ export const DecorativeElements: React.FC = () => {
       el.style.top = `${Math.random() * 100}%`;
 
       // Random animation duration and delay
-      const duration = Math.random() * 20 + 10; // 10-30s
+      const duration = Math.random() * 15 + 10; // 10-25s
       const delay = Math.random() * 10; // 0-10s delay
 
       switch (type) {
         case 'circle':
           el.style.borderRadius = '50%';
-          el.style.backgroundColor = 'rgba(255, 182, 193, 0.1)'; // Light pink
-          el.style.boxShadow = '0 0 30px rgba(255, 182, 193, 0.2)';
+          el.style.backgroundColor = 'rgba(255, 182, 193, 0.15)'; // Light pink
+          el.style.boxShadow = '0 0 20px rgba(255, 182, 193, 0.25)';
           el.style.animation = `float ${duration}s ease-in-out ${delay}s infinite`;
           break;
 
         case 'blob':
           el.style.borderRadius = '50%';
-          el.style.backgroundColor = 'rgba(186, 255, 201, 0.1)'; // Mint green
-          el.style.boxShadow = '0 0 30px rgba(186, 255, 201, 0.2)';
-          el.style.animation = `float ${duration}s ease-in-out ${delay}s infinite, blob ${duration * 0.5}s ease-in-out ${delay}s infinite`;
+          el.style.backgroundColor = 'rgba(186, 255, 201, 0.15)'; // Mint green
+          el.style.boxShadow = '0 0 20px rgba(186, 255, 201, 0.25)';
+          el.style.animation = `float ${duration}s ease-in-out ${delay}s infinite, blob ${duration * 0.4}s ease-in-out ${delay}s infinite`;
           break;
 
         case 'line':
           el.style.width = '2px';
-          el.style.height = `${Math.random() * 200 + 100}px`; // 100-300px
-          el.style.backgroundColor = 'rgba(255, 159, 243, 0.1)'; // Light purple
-          el.style.boxShadow = '0 0 20px rgba(255, 159, 243, 0.2)';
+          el.style.height = `${Math.random() * 150 + 50}px`; // 50-200px
+          el.style.backgroundColor = 'rgba(255, 159, 243, 0.15)'; // Light purple
+          el.style.boxShadow = '0 0 15px rgba(255, 159, 243, 0.2)';
           el.style.animation = `float ${duration}s ease-in-out ${delay}s infinite`;
           break;
       }
@@ -61,7 +61,7 @@ export const DecorativeElements: React.FC = () => {
 
     // Add various types of elements
     const elements = [];
-    for (let i = 0; i < 8; i++) {
+    for (let i = 0; i < 12; i++) {
       const type = ['circle', 'blob', 'line'][Math.floor(Math.random() * 3)] as 'circle' | 'blob' | 'line';
       elements.push(createElement(type));
     }
@@ -76,10 +76,10 @@ export const DecorativeElements: React.FC = () => {
           transform: translateY(0) translateX(0) rotate(0deg);
         }
         33% {
-          transform: translateY(-20px) translateX(-10px) rotate(5deg);
+          transform: translateY(-15px) translateX(-10px) rotate(5deg);
         }
         66% {
-          transform: translateY(20px) translateX(10px) rotate(-5deg);
+          transform: translateY(15px) translateX(10px) rotate(-5deg);
         }
       }
 
