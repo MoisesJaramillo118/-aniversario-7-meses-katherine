@@ -163,11 +163,11 @@ const Slideshow: React.FC = () => {
   let touchStartX = 0;
   let touchEndX = 0;
 
-  const handleTouchStart = (e: TouchEvent) => {
+  const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
     touchStartX = e.touches[0].clientX;
   };
 
-  const handleTouchEnd = (e: TouchEvent) => {
+  const handleTouchEnd = (e: React.TouchEvent<HTMLDivElement>) => {
     touchEndX = e.changedTouches[0].clientX;
     handleGesture();
   };
