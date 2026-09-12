@@ -1,46 +1,78 @@
-import Slideshow from './components/Slideshow';
+import Slideshow, { images as slideImages } from './components/Slideshow';
 import MessageCards from './components/MessageCards';
 import DecorativeElements from './components/DecorativeElements';
 import { TitleAnimation } from './components/TitleAnimation';
 import { useState, useEffect, useRef } from 'react';
 
 function App() {
+  const [imagesLoaded, setImagesLoaded] = useState(false);
   const [audioPlayed, setAudioPlayed] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
+  const [showOverlay, setShowOverlay] = useState(true); // overlay until images load
 
+  // Preload all images
   useEffect(() => {
-    const audio = audioRef.current;
-    if (!audio) return;
+    if (imagesLoaded) return;
 
-    const playAudio = async () => {
-      try {
-        await audio.play();
-        setAudioPlayed(true);
-      } catch (err) {
-        console.log('Autoplay prevented:', err);
-        // Keep audioPlayed false to show overlay
+    const total = slideImages.length;
+    let loaded = 0;
+
+    const onLoad = () => {
+      loaded++;
+      if (loaded >= total) {
+        setImagesLoaded(true);
+        // Try to play audio after images loaded
+        const audio = audioRef.current;
+        if (audio) {
+          audio.play().catch(err => {
+            console.log('Autoplay prevented:', err);
+            // Keep audioPlayed false; we will rely on user interaction overlay if needed
+          });
+        }
       }
     };
 
-    playAudio();
+    slideImages.forEach(img => {
+      const image = new Image();
+      image.src = img.src;
+      image.onload = onLoad;
+      image.onerror = onLoad; // still count as loaded to avoid hanging
+    });
+  }, []);
 
-    // Also listen for user interaction to enable audio
+  // Audio interaction fallback (if autoplay blocked)
+  useEffect(() => {
+    if (!imagesLoaded) return;
+
     const enableAudio = () => {
       if (!audioPlayed && audioRef.current) {
         audioRef.current.play().then(() => setAudioPlayed(true));
       }
     };
 
-    ['click', 'touchstart', 'keydown'].forEach((event) => {
+    ['click', 'touchstart', 'keydown'].forEach(event => {
       window.addEventListener(event, enableAudio);
     });
 
     return () => {
-      ['click', 'touchstart', 'keydown'].forEach((event) => {
+      ['click', 'touchstart', 'keydown'].forEach(event => {
         window.removeEventListener(event, enableAudio);
       });
     };
-  }, [audioPlayed]);
+  }, [imagesLoaded, audioPlayed]);
+
+  if (!imagesLoaded) {
+    return (
+      <div className="App">
+        <div className="relative min-h-screen bg-gradient-to-tr from-pink-50 to-white/50 flex items-center justify-center">
+          <div className="text-center text-white">
+            <div className="animate-pulse inline-block w-12 h-12 border-4 border-pink-300 border-t-transparent rounded-full"></div>
+            <p className="mt-4">Cargando nuestros recuerdos...</p>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="App">
@@ -62,7 +94,7 @@ function App() {
               <p className="header-subtitle animate-fade-in">
                 Celebrando cada momento, cada sonrisa y cada latido juntos
               </p>
-                          </div>
+            </div>
           </div>
         </header>
 
@@ -87,7 +119,7 @@ function App() {
           </section>
         </main>
 
-        {/* Audio permission overlay */}
+        {/* Audio permission overlay (only if audio not playing after interaction) */}
         {!audioPlayed && (
           <div className="fixed inset-0 flex flex-col items-center justify-center bg-black/50 backdrop-blur-sm z-50">
             <div className="bg-white/20 backdrop-blur-md rounded-xl p-8 text-center text-white max-w-md">

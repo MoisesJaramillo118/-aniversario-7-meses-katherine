@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 
 // Updated with all 18 images and their correct filenames
-const images = [
+export const images = [
   {
     src: '/images/WhatsApp Image 2026-09-11 at 22.56.14 (1).jpeg',
     alt: 'Momento especial 1',
@@ -253,24 +253,24 @@ const Slideshow: React.FC = () => {
         ))}
       </motion.div>
 
-      {/* Navigation arrows (optional) */}
+      {/* Navigation arrows (always visible) */}
       <div className="absolute inset-y-0 left-4 right-4 flex justify-between items-center pointer-events-none">
         <motion.button
           onClick={() => setCurrentIndex(prev => (prev - 1 + images.length) % images.length)}
-          className="p-2 bg-white/20 rounded-full hover:bg-white/30 transition-colors duration-200 hidden md:flex"
+          className="p-3 bg-white/20 rounded-full hover:bg-white/30 transition-colors duration-200"
           aria-label="Slide anterior"
         >
-          <motion.svg className="w-5 h-5 text-white" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <motion.svg className="w-6 h-6 text-white" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M15 18l-6-6 6-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
           </motion.svg>
         </motion.button>
 
         <motion.button
           onClick={() => setCurrentIndex(prev => (prev + 1) % images.length)}
-          className="p-2 bg-white/20 rounded-full hover:bg-white/30 transition-colors duration-200 hidden md:flex"
+          className="p-3 bg-white/20 rounded-full hover:bg-white/30 transition-colors duration-200"
           aria-label="Slide siguiente"
         >
-          <motion.svg className="w-5 h-5 text-white" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <motion.svg className="w-6 h-6 text-white" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M9 6l6 6-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
           </motion.svg>
         </motion.button>
