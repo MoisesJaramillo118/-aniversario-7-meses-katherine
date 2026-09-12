@@ -1,348 +1,410 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>7 Meses de Nuestro Amor</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>7 Meses — Katherine &amp; Moisés</title>
+<!-- Tipografías distintivas: Fraunces (editorial romántica) + Outfit (moderna legible). Nada de Inter/Roboto genérico. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,700;0,9..144,900;1,9..144,600;1,9..144,700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* === TEMA ROMÁNTICO ELEGANTE === */
+:root{
+  --bg-deep:#18060d;
+  --wine:#5c1023;
+  --wine-2:#8d1b3d;
+  --rose:#e6397a;
+  --blush:#ffb3c6;
+  --cream:#fdf6ec;
+  --cream-2:#f7e8d3;
+  --gold:#d9a441;
+  --ink:#2b0a12;
+  --muted:#9a7a82;
+  --card:#fffdf8;
+  --stage-bg:#18060d;
+  --slide-bg:#fdf6ec;
+  --font-display:'Fraunces',serif;
+  --font-body:'Outfit',sans-serif;
+  --ease:cubic-bezier(.16,1,.3,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+/* === VIEWPORT-BASE.CSS (OBLIGATORIO SKILL frontend-slides, incluido íntegro) === */
+html,body{width:100%;height:100%;margin:0;overflow:hidden;background:var(--stage-bg,#000)}
+.deck-viewport{position:fixed;inset:0;overflow:hidden;background:var(--stage-bg,#000)}
+.deck-stage{position:absolute;left:0;top:0;width:1920px;height:1080px;overflow:hidden;transform-origin:0 0;background:var(--slide-bg,#fff)}
+.slide{position:absolute;inset:0;width:1920px;height:1080px;overflow:hidden;display:block;visibility:hidden;opacity:0;pointer-events:none;background:var(--slide-bg,#fff)}
+.slide.active,.slide.visible{visibility:visible;opacity:1;pointer-events:auto;z-index:1}
+img,video,canvas,svg{max-width:100%;max-height:100%}
+.deck-controls{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);z-index:1000}
+@media print{html,body{width:1920px;height:auto;overflow:visible;background:#fff}.deck-viewport{position:static;overflow:visible;background:#fff}.deck-stage{position:static;width:auto;height:auto;transform:none!important;background:none}.slide{position:relative;display:block!important;visibility:visible!important;opacity:1!important;pointer-events:auto!important;width:1920px;height:1080px;break-after:page;page-break-after:always}.slide:last-child{break-after:auto;page-break-after:auto}.deck-controls{display:none!important}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.2s!important}}
+/* === DISEÑO === */
+body{font-family:var(--font-body);color:var(--ink)}
+.slide-inner{width:1920px;height:1080px;padding:84px 96px;display:flex;gap:64px;align-items:center;position:relative}
+.eyebrow{display:inline-flex;align-items:center;gap:14px;font-size:26px;letter-spacing:6px;text-transform:uppercase;color:var(--wine-2);font-weight:700}
+.eyebrow::before{content:'';width:56px;height:3px;background:var(--rose);display:inline-block;border-radius:2px}
+h1,h2{font-family:var(--font-display);line-height:.95;color:var(--ink)}
+.cover-title{font-size:150px;font-weight:900}
+.cover-title em{font-style:italic;font-weight:700;color:var(--wine-2)}
+.script{font-family:var(--font-display);font-style:italic;font-size:56px;color:var(--rose)}
+.lead{font-size:34px;line-height:1.5;color:#5a323c;max-width:760px}
+.badge{display:inline-flex;align-items:center;gap:12px;background:var(--ink);color:var(--cream);border-radius:999px;padding:16px 30px;font-size:26px;font-weight:600;letter-spacing:2px}
+.badge .dot{width:12px;height:12px;border-radius:50%;background:var(--rose)}
+.num{position:absolute;top:56px;left:96px;font-family:var(--font-display);font-size:32px;color:var(--muted);letter-spacing:3px}
+.brand{position:absolute;top:56px;right:96px;font-size:26px;letter-spacing:4px;color:var(--muted);font-weight:600}
+.photo-wrap{position:relative;flex:1;height:880px;border-radius:48px;overflow:hidden;box-shadow:0 40px 100px rgba(92,16,35,.35);border:10px solid #fff;transform:rotate(1.5deg)}
+.photo-wrap.straight{transform:none}
+.photo-wrap img{width:100%;height:100%;object-fit:cover;animation:kenburns 9s ease-in-out infinite alternate}
+@keyframes kenburns{from{transform:scale(1)}to{transform:scale(1.12)}}
+.photo-wrap::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(24,6,13,.45),transparent 55%)}
+.photo-caption{position:absolute;left:36px;bottom:32px;z-index:2;color:#fff;font-family:var(--font-display);font-style:italic;font-size:40px;text-shadow:0 2px 20px rgba(0,0,0,.6)}
+.text-col{flex:1.05}
+.pill-row{display:flex;gap:16px;margin:28px 0;flex-wrap:wrap}
+.pill{background:#fff;border:2px solid #f0d6de;border-radius:999px;padding:14px 26px;font-size:26px;font-weight:600;color:var(--wine-2)}
+.duo{display:flex;gap:28px;flex:1;height:880px}
+.duo .photo-wrap{height:100%;flex:1}
+.duo .photo-wrap:nth-child(2){transform:rotate(-1.5deg);margin-top:60px}
+.cards3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:32px;margin-top:36px}
+.mcard{background:var(--card);border-radius:36px;padding:48px 40px;box-shadow:0 20px 60px rgba(92,16,35,.15);border:1px solid #f3ddd2;min-height:520px}
+.mcard .ico{font-size:64px}
+.mcard h3{font-family:var(--font-display);font-size:48px;margin:16px 0;color:var(--wine-2)}
+.mcard p{font-size:29px;line-height:1.6;color:#5a323c}
+.quote-big{font-family:var(--font-display);font-size:84px;line-height:1.05;font-style:italic}
+.hearts-bg{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.hearts-bg span{position:absolute;font-size:48px;opacity:.5;animation:float 9s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0) rotate(-6deg)}50%{transform:translateY(-40px) rotate(8deg)}}
+/* animación de entrada */
+.reveal{opacity:0;transform:translateY(42px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.slide.visible .reveal{opacity:1;transform:none}
+.slide.visible .reveal:nth-child(2){transition-delay:.12s}
+.slide.visible .reveal:nth-child(3){transition-delay:.22s}
+.slide.visible .reveal:nth-child(4){transition-delay:.32s}
+/* === CONTROLES FUERA DEL STAGE (sí pueden usar clamp y ser táctiles) === */
+.deck-controls{display:flex;align-items:center;gap:14px;background:rgba(24,6,13,.82);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.15);padding:12px 18px;border-radius:999px;box-shadow:0 10px 40px rgba(0,0,0,.4);max-width:94vw}
+.cbtn{border:none;cursor:pointer;border-radius:999px;font-family:var(--font-body);font-weight:700;color:#fff;background:var(--rose);min-width:clamp(52px,8vw,64px);min-height:clamp(52px,8vw,64px);font-size:clamp(20px,3vw,26px);display:flex;align-items:center;justify-content:center;padding:0 18px;transition:transform .2s}
+.cbtn:active{transform:scale(.93)}
+.cbtn.ghost{background:rgba(255,255,255,.12)}
+.cbtn.music.on{background:var(--gold);color:#2b0a12}
+#dots{display:flex;gap:8px;max-width:36vw;overflow-x:auto;padding:4px}
+#dots button{width:14px;height:14px;min-width:14px;border-radius:50%;border:none;background:rgba(255,255,255,.3);cursor:pointer}
+#dots button.on{background:var(--blush);transform:scale(1.35)}
+#counter{color:#fff;font-size:clamp(14px,2.6vw,18px);font-weight:600;white-space:nowrap}
+#progress{position:fixed;top:0;left:0;height:6px;background:linear-gradient(90deg,var(--rose),var(--gold));width:0;z-index:1001}
+#hint{position:fixed;top:14px;left:50%;transform:translateX(-50%);z-index:1000;color:#fff;background:rgba(0,0,0,.45);padding:10px 20px;border-radius:999px;font-size:clamp(13px,2.8vw,17px)}
+</style>
 </head>
 <body>
-    <div class="container">
-        <!-- Audio element (hidden) -->
-        <audio id="background-audio" loop preload="auto">
-            <source src="/audio/nuestra-cancion.mp3" type="audio/mpeg">
-            Tu navegador no soporta el elemento de audio.
-        </audio>
+<div id="progress"></div>
+<div id="hint">Desliza / toca los botones 💖</div>
+<!-- Música: toca empezar para activar (los navegadores bloquean autoplay) -->
+<audio id="bgAudio" loop preload="auto" src="public/audio/nuestra-cancion.mp3"></audio>
 
-        <div class="slideshow">
-            <div id="loading-spinner">
-                <div class="spinner"></div>
-                <p>Cargando nuestros recuerdos...</p>
-            </div>
-            <!-- Slides will be generated via JS -->
-            <button id="prevBtn" class="nav-button prev">&#9664;</button>
-            <button id="nextBtn" class="nav-button next">&#9654;</button>
-        </div>
+<div class="deck-viewport">
+<main class="deck-stage" id="deckStage">
 
-        <div class="messages">
-            <!-- Romantic messages will appear below slideshow -->
-        </div>
-    </div>
+<!-- 1 PORTADA -->
+<section class="slide active visible">
+<div class="hearts-bg"><span style="left:8%;top:12%">💖</span><span style="left:90%;top:20%;animation-delay:1s">💕</span><span style="left:5%;top:80%;animation-delay:2s">🌹</span><span style="left:92%;top:75%;animation-delay:.5s">✨</span></div>
+<div class="slide-inner">
+<div class="text-col">
+<div class="reveal"><span class="num">01 / 14</span><span class="brand">KATHERINE &amp; MOISÉS</span></div>
+<div class="reveal"><span class="badge"><span class="dot"></span> 7 MESES JUNTOS</span></div>
+<h1 class="reveal cover-title">Nuestro<br><em>amor</em> 💖</h1>
+<p class="reveal script">mi amorcito, mi niña hermosa, mi eternidad</p>
+<p class="reveal lead">Hace 7 meses conocí al amor de mi vida. Esta historia es para ti, Katherine.</p>
+<div class="reveal pill-row"><span class="pill">💑 7 meses</span><span class="pill">♾️ para siempre</span><span class="pill">🌹 te amo</span></div>
+</div>
+<div class="reveal photo-wrap"><img src="public/images/WhatsApp Image 2026-09-11 at 22.56.14 (1).jpeg" alt="Nosotros"><div class="photo-caption">Toca ▶ para empezar ✨</div></div>
+</div>
+</section>
 
-    <script>
-        // Data for slides and messages
-        const slides = [
-            {
-                src: '/images/WhatsApp Image 2026-09-11 at 22.56.14 (1).jpeg',
-                title: 'Mi amorcito',
-                text: 'eres mi persona favorita en este mundo, mi confidente, mi cómplice y mi mejor amigo.'
-            },
-            {
-                src: '/images/WhatsApp Image 2026-09-11 at 22.56.14 (2).jpeg',
-                title: 'Gracias por ser especial',
-                text: 'gracias por ser especial en mi vida, por tu luz y tu energía que iluminas cada día.'
-            },
-            {
-                src: '/images/WhatsApp Image 2026-09-11 at 22.56.14.jpeg',
-                title: 'Te amo demasiado',
-                text: 'te amo demasiado y te quiero por toda la eternidad, cada día más que el anterior.'
-            },
-            {
-                src: '/images/WhatsApp Image 2026-09-11 at 22.56.15 (1).jpeg',
-                title: 'Hace 7 meses',
-                text: 'Hace 7 meses conocí al amor de mi vida, y cada día contigo es un regalo que atesoro.'
-            },
-            {
-                src: '/images/WhatsApp Image 2026-09-11 at 22.56.15 (2).jpeg',
-                title: 'Eres hermosa',
-                text: 'eres la mujer más hermosa del universo, tanto por dentro como por fuera, y eso me hace el hombre más afortunado.'
-            },
-            {
-                src: '/images/WhatsApp Image 2026-09-11 at 22.56.15 (3).jpeg',
-                title: 'Siempre estaré',
-                text: 'siempre estaré para ti, en los buenos momentos y en los desafíos.'
-            },
-            {
-                src: '/images/WhatsApp Image 2026-09-11 at 22.56.15.jpeg',
-                title: 'De la mano',
-                text: 'De la mano juntos por toda la eternidad, enfrentando todo lo que venga.'
-            },
-            {
-                src: '/images/WhatsApp Image 2026-09-11 at 22.56.16 (1).jpeg',
-                title: 'Cada día',
-                text: 'cada día nos conocemos más y nuestro amor crece y se fortalece.'
-            },
-            {
-                src: '/images/WhatsApp Image 2026-09-11 at 22.56.16 (2).jpeg',
-                title: 'Aunque tengamos diferencias',
-                text: 'aunque tengamos diferencias, aprendemos a crecer juntas y ser mejores cada día.'
-            },
-            {
-                src: '/images/WhatsApp Image 2026-09-11 at 22.56.16 (3).jpeg',
-                title: 'Ser felices',
-                text: 'ser felices amándonos el uno al otro es nuestro propósito y nuestra alegría.'
-            },
-            {
-                src: '/images/WhatsApp Image 2026-09-11 at 22.56.16 (4).jpeg',
-                title: 'Nuestro amor',
-                text: 'nuestro amor es único, especial y lleno de momentos mágicos que atesoramos.'
-            },
-            {
-                src: '/images/WhatsApp Image 2026-09-11 at 22.56.16 (5).jpeg',
-                title: 'Mi niña hermosa',
-                text: 'eres mi niña hermosa, mi luz en los días oscuros y mi razón para sonreír.'
-            },
-            {
-                src: '/images/WhatsApp Image 2026-09-11 at 22.56.16.jpeg',
-                title: 'Eres mi vida',
-                text: 'eres el amor de mi vida y mi razón de ser, mi inspiración constante.'
-            },
-            {
-                src: '/images/WhatsApp Image 2026-09-11 at 22.56.17 (1).jpeg',
-                title: 'Contigo siempre',
-                text: 'contigo quiero estar por siempre y jamás, construyendo nuestro futuro juntos.'
-            },
-            {
-                src: '/images/WhatsApp Image 2026-09-11 at 22.56.17 (2).jpeg',
-                title: 'Mi eternidad',
-                text: 'eres mi eternidad, mi siempre, mi para siempre, mi hogar y mi refugio.'
-            },
-            {
-                src: '/images/WhatsApp Image 2026-09-11 at 22.56.17 (3).jpeg',
-                title: 'Te adoro',
-                text: 'te adoro más de lo que las palabras pueden expresar, más allá de lo que cualquier lenguaje puede decir.'
-            },
-            {
-                src: '/images/WhatsApp Image 2026-09-11 at 22.56.17 (4).jpeg',
-                title: '7 meses de nosotros',
-                text: '7 meses de amor, risas, aprendizajes y crecimiento juntos como pareja.'
-            },
-            {
-                src: '/images/WhatsApp Image 2026-09-11 at 22.56.17.jpeg',
-                title: 'Mi princessa',
-                text: 'eres mi princesa, mi reina, mi todo, y mereces todo el amor y felicidad del mundo.'
-            }
-        ];
+<!-- 2 HISTORIA -->
+<section class="slide">
+<div class="slide-inner">
+<div class="reveal photo-wrap straight"><img src="public/images/WhatsApp Image 2026-09-11 at 22.56.14 (2).jpeg" alt="Recuerdo"><div class="photo-caption">donde todo empezó</div></div>
+<div class="text-col">
+<div class="reveal"><span class="num">02 / 14</span><span class="brand">NUESTRA HISTORIA</span></div>
+<div class="reveal eyebrow">Hace 7 meses</div>
+<h2 class="reveal" style="font-size:96px">Conocí a mi<br>persona favorita</h2>
+<p class="reveal lead">Eres mi confidente, mi cómplice y mi mejor amigo. Contigo descubrí lo que significa amar profundamente.</p>
+<div class="reveal pill-row"><span class="pill">💖 mi amorcito</span><span class="pill">👧 mi niña hermosa</span></div>
+</div>
+</div>
+</section>
 
-        const messages = [
-            { icon: '💖', title: 'Mi amorcito', text: 'eres mi persona favorita en este mundo, mi confidente, mi cómplice y mi mejor amigo. Contigo descubrí lo que significa amar profundamente y ser amado a cambio.' },
-            { icon: '👧', title: 'Mi niña hermosa', text: 'cada día descubro lo afortunado que soy de tener a alguien tan especial, tan bella por dentro y por fuera. Tu sonrisa ilumina mis días oscuros.' },
-            { icon: '♾️', title: 'Mi eternidad', text: 'contigo quiero construir un futuro lleno de amor, aventuras y momentos que atesoraremos para siempre. Eres mi hogar, mi refugio y mi razón de ser.' },
-            { icon: '😄', title: 'Nuestra alegría', text: 'juntos encontramos la felicidad en las cosas simples: una conversación, una sonrisa, un abrazo. Nuestra risa es la mejor música que existe.' },
-            { icon: '🌟', title: 'Nuestro crecimiento', text: 'aunque tengamos diferencias, aprendemos a crecer juntas y ser mejores cada día. Nuestra relación nos enseña paciencia, comprensión y amor incondicional.' },
-            { icon: '🎯', title: 'Nuestro propósito', text: 'ser felices amándonos el uno al otro es nuestro propósito y nuestra alegría. Juntos somos más fuertes, más valientes y más completos.' }
-        ];
+<!-- 3 -->
+<section class="slide">
+<div class="slide-inner">
+<div class="text-col">
+<div class="reveal"><span class="num">03 / 14</span><span class="brand">MOMENTOS</span></div>
+<div class="reveal eyebrow">Gracias por ser especial</div>
+<h2 class="reveal" style="font-size:88px">Tu luz ilumina<br>cada día ☀️</h2>
+<p class="reveal lead">Gracias por tu luz y tu energía. Te amo demasiado, hoy más que ayer y menos que mañana.</p>
+</div>
+<div class="reveal duo">
+<div class="photo-wrap"><img src="public/images/WhatsApp Image 2026-09-11 at 22.56.14.jpeg" alt=""><div class="photo-caption">te amo</div></div>
+<div class="photo-wrap"><img src="public/images/WhatsApp Image 2026-09-11 at 22.56.15 (1).jpeg" alt=""><div class="photo-caption">mi todo</div></div>
+</div>
+</div>
+</section>
 
-        const slideshow = document.querySelector('.slideshow');
-        const messagesContainer = document.querySelector('.messages');
-        const audio = document.getElementById('background-audio');
-        const loadingSpinner = document.getElementById('loading-spinner');
+<!-- 4 -->
+<section class="slide">
+<div class="slide-inner">
+<div class="reveal duo">
+<div class="photo-wrap"><img src="public/images/WhatsApp Image 2026-09-11 at 22.56.15 (2).jpeg" alt=""><div class="photo-caption">hermosa</div></div>
+<div class="photo-wrap"><img src="public/images/WhatsApp Image 2026-09-11 at 22.56.15 (3).jpeg" alt=""><div class="photo-caption">siempre tú</div></div>
+</div>
+<div class="text-col">
+<div class="reveal"><span class="num">04 / 14</span><span class="brand">MOMENTOS</span></div>
+<div class="reveal eyebrow">Eres hermosa</div>
+<h2 class="reveal" style="font-size:88px">La mujer más<br>hermosa 🌹</h2>
+<p class="reveal lead">Por dentro y por fuera. Siempre estaré para ti, en los buenos momentos y en los desafíos.</p>
+</div>
+</div>
+</section>
 
-        // Create slides with Ken Burns effect containers
-        slides.forEach((slide, index) => {
-            const slideDiv = document.createElement('div');
-            slideDiv.className = `slide${index === 0 ? ' active' : ''}`;
-            slideDiv.style.backgroundImage = `url('${slide.src}')`;
-            slideDiv.innerHTML = `
-                <div class="slide-content">
-                    <div class="slide-overlay">
-                        <h2 class="slide-title">${slide.title}</h2>
-                        <p class="slide-text">${slide.text}</p>
-                    </div>
-                </div>
-            `;
-            slideshow.appendChild(slideDiv);
-        });
+<!-- 5 -->
+<section class="slide">
+<div class="slide-inner">
+<div class="text-col">
+<div class="reveal"><span class="num">05 / 14</span><span class="brand">DE LA MANO</span></div>
+<div class="reveal eyebrow">Juntos por la eternidad</div>
+<h2 class="reveal" style="font-size:88px">De la mano,<br>por siempre 🤝</h2>
+<p class="reveal lead">Cada día nos conocemos más y nuestro amor crece y se fortalece.</p>
+<div class="reveal pill-row"><span class="pill">🤝 juntos</span><span class="pill">💪 fuertes</span></div>
+</div>
+<div class="reveal duo">
+<div class="photo-wrap"><img src="public/images/WhatsApp Image 2026-09-11 at 22.56.15.jpeg" alt=""><div class="photo-caption">mi mano</div></div>
+<div class="photo-wrap"><img src="public/images/WhatsApp Image 2026-09-11 at 22.56.16 (1).jpeg" alt=""><div class="photo-caption">tu mano</div></div>
+</div>
+</div>
+</section>
 
-        // Create messages
-        const messagesDiv = document.createElement('div');
-        messagesDiv.className = 'messages-grid';
-        messages.forEach(msg => {
-            const msgDiv = document.createElement('div');
-            msgDiv.className = 'message-card';
-            msgDiv.innerHTML = `
-                <div class="message-icon">${msg.icon}</div>
-                <h3 class="message-title">${msg.title}</h3>
-                <p class="message-text">${msg.text}</p>
-            `;
-            messagesDiv.appendChild(msgDiv);
-        });
-        messagesContainer.appendChild(messagesDiv);
+<!-- 6 -->
+<section class="slide">
+<div class="slide-inner">
+<div class="reveal duo">
+<div class="photo-wrap"><img src="public/images/WhatsApp Image 2026-09-11 at 22.56.16 (2).jpeg" alt=""><div class="photo-caption">aprendemos</div></div>
+<div class="photo-wrap"><img src="public/images/WhatsApp Image 2026-09-11 at 22.56.16 (3).jpeg" alt=""><div class="photo-caption">crecemos</div></div>
+</div>
+<div class="text-col">
+<div class="reveal"><span class="num">06 / 14</span><span class="brand">CRECEMOS</span></div>
+<div class="reveal eyebrow">Aunque tengamos diferencias</div>
+<h2 class="reveal" style="font-size:84px">Ser felices<br>amándonos 😄</h2>
+<p class="reveal lead">Aprendemos a crecer juntos y ser mejores cada día. Nuestro amor es único y mágico.</p>
+</div>
+</div>
+</section>
 
-        // Slideshow animation with Ken Burns effect
-        let current = 0;
-        const total = slides.length;
-        let kenBurnsIntervals = []; // To store intervals for each slide's Ken Burns effect
+<!-- 7 -->
+<section class="slide">
+<div class="slide-inner">
+<div class="text-col">
+<div class="reveal"><span class="num">07 / 14</span><span class="brand">MI NIÑA</span></div>
+<div class="reveal eyebrow">Nuestro amor</div>
+<h2 class="reveal" style="font-size:88px">Mi niña<br>hermosa 👧💖</h2>
+<p class="reveal lead">Eres mi luz en los días oscuros, mi razón para sonreír, el amor de mi vida.</p>
+</div>
+<div class="reveal duo">
+<div class="photo-wrap"><img src="public/images/WhatsApp Image 2026-09-11 at 22.56.16 (4).jpeg" alt=""><div class="photo-caption">mi luz</div></div>
+<div class="photo-wrap"><img src="public/images/WhatsApp Image 2026-09-11 at 22.56.16 (5).jpeg" alt=""><div class="photo-caption">mi sonrisa</div></div>
+</div>
+</div>
+</section>
 
-        function startKenBurnsEffect(slideElement) {
-            // Clear any existing intervals for this slide
-            const slideIndex = Array.from(slideshow.children).indexOf(slideElement);
-            if (kenBurnsIntervals[slideIndex]) {
-                clearInterval(kenBurnsIntervals[slideIndex]);
-            }
+<!-- 8 -->
+<section class="slide">
+<div class="slide-inner">
+<div class="reveal duo">
+<div class="photo-wrap"><img src="public/images/WhatsApp Image 2026-09-11 at 22.56.16.jpeg" alt=""><div class="photo-caption">mi vida</div></div>
+<div class="photo-wrap"><img src="public/images/WhatsApp Image 2026-09-11 at 22.56.17 (1).jpeg" alt=""><div class="photo-caption">mi futuro</div></div>
+</div>
+<div class="text-col">
+<div class="reveal"><span class="num">08 / 14</span><span class="brand">MI VIDA</span></div>
+<div class="reveal eyebrow">Contigo siempre</div>
+<h2 class="reveal" style="font-size:88px">Contigo quiero<br>estar por siempre ♾️</h2>
+<p class="reveal lead">Construyendo nuestro futuro juntos. Eres mi eternidad, mi hogar y mi refugio.</p>
+</div>
+</div>
+</section>
 
-            // Randomly choose zoom direction and pan direction
-            const zoomIn = Math.random() > 0.5;
-            const panX = Math.random() > 0.5 ? 'left' : 'right';
-            const panY = Math.random() > 0.5 ? 'top' : 'bottom';
+<!-- 9 -->
+<section class="slide">
+<div class="slide-inner">
+<div class="text-col">
+<div class="reveal"><span class="num">09 / 14</span><span class="brand">MI ETERNIDAD</span></div>
+<div class="reveal eyebrow">Te adoro</div>
+<h2 class="reveal" style="font-size:84px">Más de lo que las<br>palabras dicen 💌</h2>
+<p class="reveal lead">7 meses de amor, risas, aprendizajes y crecimiento juntos como pareja.</p>
+<div class="reveal pill-row"><span class="pill">💌 te adoro</span><span class="pill">👑 mi princesa</span></div>
+</div>
+<div class="reveal duo">
+<div class="photo-wrap"><img src="public/images/WhatsApp Image 2026-09-11 at 22.56.17 (2).jpeg" alt=""><div class="photo-caption">mi eternidad</div></div>
+<div class="photo-wrap"><img src="public/images/WhatsApp Image 2026-09-11 at 22.56.17 (3).jpeg" alt=""><div class="photo-caption">mi reina</div></div>
+</div>
+</div>
+</section>
 
-            // Set initial state
-            let scale = zoomIn ? 1 : 1.1;
-            let positionX = panX === 'left' ? 0 : panX === 'right' ? 100 : 50;
-            let positionY = panY === 'top' ? 0 : panY === 'bottom' ? 100 : 50;
+<!-- 10 COLLAGE FINAL FOTOS -->
+<section class="slide">
+<div class="slide-inner">
+<div class="reveal photo-wrap straight" style="flex:1"><img src="public/images/WhatsApp Image 2026-09-11 at 22.56.17 (4).jpeg" alt=""><div class="photo-caption">7 meses de nosotros</div></div>
+<div class="reveal photo-wrap" style="flex:1"><img src="public/images/WhatsApp Image 2026-09-11 at 22.56.17.jpeg" alt=""><div class="photo-caption">mi princesa 👑</div></div>
+<div class="text-col" style="flex:.9">
+<div class="reveal"><span class="num">10 / 14</span><span class="brand">NOSOTROS</span></div>
+<div class="reveal eyebrow">7 meses de nosotros</div>
+<h2 class="reveal" style="font-size:82px">Eres mi princesa,<br>mi reina, mi todo</h2>
+<p class="reveal lead">Mereces todo el amor y felicidad del mundo.</p>
+</div>
+</div>
+</section>
 
-            // Apply initial styles
-            slideElement.style.backgroundSize = `${zoomIn ? '100%' : '110%'}`;
-            slideElement.style.backgroundPosition = `${positionX}% ${positionY}%`;
+<!-- 11 MENSAJES -->
+<section class="slide">
+<div class="slide-inner" style="flex-direction:column;align-items:stretch;justify-content:center">
+<div class="reveal"><span class="num" style="position:static">11 / 14</span></div>
+<div class="reveal eyebrow">Cartas para ti</div>
+<h2 class="reveal" style="font-size:84px">Lo que mi corazón te dice</h2>
+<div class="reveal cards3">
+<div class="mcard"><div class="ico">💖</div><h3>Mi amorcito</h3><p>Eres mi persona favorita, mi confidente y mi mejor amigo. Amar contigo es mi mejor aventura.</p></div>
+<div class="mcard"><div class="ico">👧</div><h3>Mi niña hermosa</h3><p>Tu sonrisa ilumina mis días oscuros. Qué afortunado soy de tenerte.</p></div>
+<div class="mcard"><div class="ico">♾️</div><h3>Mi eternidad</h3><p>Contigo quiero construir un futuro lleno de amor. Eres mi hogar.</p></div>
+</div>
+</div>
+</section>
 
-            // Create animation interval
-            const interval = setInterval(() => {
-                // Update scale and position slowly
-                const targetScale = zoomIn ? 1.1 : 1;
-                const targetX = panX === 'left' ? 100 : panX === 'right' ? 0 : 50;
-                const targetY = panY === 'top' ? 100 : panY === 'bottom' ? 0 : 50;
+<!-- 12 PROPÓSITO -->
+<section class="slide" style="background:#18060d">
+<div class="slide-inner" style="flex-direction:column;justify-content:center;text-align:center;color:var(--cream)">
+<div class="reveal eyebrow" style="color:var(--blush)">Nuestro propósito</div>
+<p class="reveal quote-big" style="color:var(--cream)">“Ser felices amándonos<br>el uno al otro” 🌟</p>
+<p class="reveal lead" style="color:var(--cream-2);max-width:1000px;margin:24px auto 0">Juntos somos más fuertes, más valientes y más completos. Nuestra risa es la mejor música.</p>
+<div class="reveal pill-row" style="justify-content:center"><span class="pill">😄 alegría</span><span class="pill">🌟 crecimiento</span><span class="pill">🎯 propósito</span></div>
+<div class="reveal" style="color:var(--muted);font-size:26px;letter-spacing:4px;margin-top:12px">12 / 14 — KATHERINE &amp; MOISÉS</div>
+</div>
+</section>
 
-                // Easing function for smooth transition
-                const ease = (t) => t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
+<!-- 13 PROMESA -->
+<section class="slide">
+<div class="slide-inner" style="flex-direction:column;justify-content:center;text-align:center">
+<div class="reveal"><span class="num" style="position:static">13 / 14</span></div>
+<div class="reveal badge"><span class="dot"></span> MI PROMESA</div>
+<h2 class="reveal" style="font-size:92px;margin:24px 0">Siempre estaré<br>para <em style="color:var(--wine-2)">ti</em> 🤍</h2>
+<p class="reveal lead" style="max-width:1100px;margin:0 auto">En los buenos momentos y en los desafíos. De la mano, por toda la eternidad.</p>
+</div>
+</section>
 
-                // In a real implementation, we'd use CSS transitions or requestAnimationFrame
-                // For simplicity, we'll just update the styles directly
-                // In practice, this would be better handled with CSS animations
-            }, 50); // Update every 50ms for smoothness
+<!-- 14 FINAL -->
+<section class="slide" style="background:linear-gradient(135deg,#5c1023,#8d1b3d 60%,#e6397a)">
+<div class="hearts-bg" id="finalHearts"><span style="left:10%;top:20%">💖</span><span style="left:80%;top:15%">💕</span><span style="left:15%;top:75%">🌹</span><span style="left:85%;top:70%">💘</span></div>
+<div class="slide-inner" style="flex-direction:column;justify-content:center;text-align:center;color:#fff">
+<div class="reveal" style="font-size:30px;letter-spacing:6px">14 / 14 — PARA SIEMPRE</div>
+<h2 class="reveal" style="font-size:150px;color:#fff">Te amo,<br>Katherine 💖</h2>
+<p class="reveal script" style="color:var(--cream)">mi siempre, mi para siempre</p>
+<p class="reveal" style="font-size:32px;opacity:.9">Gracias por estos 7 meses. Vamos por toda una vida.</p>
+<div class="reveal" style="font-size:28px">— Moisés 💌</div>
+</div>
+</section>
 
-            // Store the interval
-            kenBurnsIntervals[slideIndex] = interval;
-        }
+</main>
+</div>
 
-        function stopKenBurnsEffect(slideElement) {
-            const slideIndex = Array.from(slideshow.children).indexOf(slideElement);
-            if (kenBurnsIntervals[slideIndex]) {
-                clearInterval(kenBurnsIntervals[slideIndex]);
-                kenBurnsIntervals[slideIndex] = null;
-            }
-        }
+<!-- Controles grandes, táctiles, fuera del stage para que funcionen en celular -->
+<nav class="deck-controls" aria-label="Controles">
+<button class="cbtn ghost" id="prevBtn" aria-label="Anterior">◀</button>
+<button class="cbtn" id="nextBtn" aria-label="Siguiente">▶</button>
+<div id="dots" aria-label="Ir a diapositiva"></div>
+<span id="counter">1 / 14</span>
+<button class="cbtn ghost music" id="musicBtn" aria-label="Música">🎵</button>
+</nav>
 
-        function showNextSlide() {
-            // Stop Ken Burns on current slide
-            const currentSlide = slideshow.children[current];
-            stopKenBurnsEffect(currentSlide);
-            currentSlide.classList.remove('active');
-
-            // Move to next slide
-            current = (current + 1) % total;
-            const nextSlide = slideshow.children[current];
-            nextSlide.classList.add('active');
-
-            // Start Ken Burns on new slide
-            startKenBurnsEffect(nextSlide);
-        }
-
-        function showPrevSlide() {
-            // Stop Ken Burns on current slide
-            const currentSlide = slideshow.children[current];
-            stopKenBurnsEffect(currentSlide);
-            currentSlide.classList.remove('active');
-
-            // Move to previous slide
-            current = (current - 1 + total) % total;
-            const prevSlide = slideshow.children[current];
-            prevSlide.classList.add('active');
-
-            // Start Ken Burns on new slide
-            startKenBurnsEffect(prevSlide);
-        }
-
-        // Change slide every 6 seconds
-        let slideInterval = setInterval(showNextSlide, 6000);
-
-        // Reset interval on user interaction (manual navigation)
-        function resetInterval() {
-            clearInterval(slideInterval);
-            slideInterval = setInterval(showNextSlide, 6000);
-        }
-
-        // Preload images and then play audio
-        let loaded = 0;
-        const totalImages = slides.length;
-
-        function imageLoaded() {
-            loaded++;
-            if (loaded >= totalImages) {
-                // All images loaded, hide spinner and play audio
-                loadingSpinner.style.opacity = '0';
-                setTimeout(() => {
-                    loadingSpinner.style.display = 'none';
-                }, 300);
-
-                // Play audio
-                audio.play().catch(e => {
-                    console.log('Autoplay prevented:', e);
-                    // Audio will be enabled by user interaction if needed
-                });
-            }
-        }
-
-        slides.forEach(slide => {
-            const img = new Image();
-            img.src = slide.src;
-            img.onload = imageLoaded;
-            img.onerror = imageLoaded; // count as loaded even if error to avoid hanging
-        });
-
-        // Touch support for manual swipe
-        let touchStartX = 0;
-        let touchEndX = 0;
-
-        slideshow.addEventListener('touchstart', e => {
-            touchStartX = e.changedTouches[0].screenX;
-        }, { passive: true });
-
-        slideshow.addEventListener('touchend', e => {
-            touchEndX = e.changedTouches[0].screenX;
-            handleSwipe();
-        }, { passive: true });
-
-        function handleSwipe() {
-            const swipeThreshold = 50; // minimum distance to trigger
-            const diff = touchStartX - touchEndX;
-            if (diff > swipeThreshold) {
-                // swipe left -> next slide
-                showNextSlide();
-                resetInterval();
-            } else if (diff < -swipeThreshold) {
-                // swipe right -> previous slide
-                showPrevSlide();
-                resetInterval();
-            }
-        }
-
-        // Navigation buttons
-        const prevBtn = document.getElementById('prevBtn');
-        const nextBtn = document.getElementById('nextBtn');
-        prevBtn.addEventListener('click', () => {
-            showPrevSlide();
-            resetInterval();
-        });
-        nextBtn.addEventListener('click', () => {
-            showNextSlide();
-            resetInterval();
-        });
-
-        // Optional: keyboard arrows
-        document.addEventListener('keydown', e => {
-            if (e.key === 'ArrowRight') {
-                showNextSlide();
-                resetInterval();
-            } else if (e.key === 'ArrowLeft') {
-                showPrevSlide();
-                resetInterval();
-            }
-        });
-
-        // Initialize Ken Burns effect on first slide
-        if (slideshow.children.length > 0) {
-            startKenBurnsEffect(slideshow.children[0]);
-        }
-    </script>
+<script>
+/* Controlador estilo frontend-slides: stage fijo 1920x1080 escalado completo, swipe + botones + dots */
+class SlidePresentation{
+  constructor(){
+    this.slides=[...document.querySelectorAll('.slide')];
+    this.i=0; this.stage=document.getElementById('deckStage');
+    this.counter=document.getElementById('counter');
+    this.progress=document.getElementById('progress');
+    this.dotsBox=document.getElementById('dots');
+    this.audio=document.getElementById('bgAudio');
+    this.musicBtn=document.getElementById('musicBtn');
+    this.buildDots(); this.scale(); this.show(0);
+    window.addEventListener('resize',()=>this.scale());
+    document.getElementById('prevBtn').onclick=()=>{this.prev();this.musicTry()};
+    document.getElementById('nextBtn').onclick=()=>{this.next();this.musicTry()};
+    this.musicBtn.onclick=()=>this.toggleMusic();
+    document.addEventListener('keydown',e=>{
+      if(e.key==='ArrowRight'||e.key===' '){e.preventDefault();this.next()}
+      if(e.key==='ArrowLeft'){this.prev()}
+    });
+    // swipe táctil
+    let sx=0,ex=0;
+    const vp=document.querySelector('.deck-viewport');
+    vp.addEventListener('touchstart',e=>{sx=e.changedTouches[0].clientX},{passive:true});
+    vp.addEventListener('touchend',e=>{ex=e.changedTouches[0].clientX;const d=sx-ex;
+      if(d>50)this.next();else if(d<-50)this.prev();this.musicTry()},{passive:true});
+    // tap en laterales en móvil
+    vp.addEventListener('click',e=>{
+      const x=e.clientX;
+      if(x<window.innerWidth*0.2)this.prev();
+      else if(x>window.innerWidth*0.8)this.next();
+    });
+    // autoplay suave cada 7s, se reinicia al interactuar
+    this.auto=setInterval(()=>this.next(),7000);
+    ['click','touchstart'].forEach(ev=>document.addEventListener(ev,()=>{
+      clearInterval(this.auto);this.auto=setInterval(()=>this.next(),7000);
+    },{passive:true}));
+    setTimeout(()=>{const h=document.getElementById('hint');if(h)h.style.display='none'},5000);
+  }
+  buildDots(){
+    this.slides.forEach((_,k)=>{
+      const b=document.createElement('button');
+      b.setAttribute('aria-label','Ir a '+(k+1));
+      b.onclick=(e)=>{e.stopPropagation();this.show(k)};
+      this.dotsBox.appendChild(b);
+    });
+  }
+  scale(){
+    const f=Math.min(window.innerWidth/1920,window.innerHeight/1080);
+    const x=(window.innerWidth-1920*f)/2, y=(window.innerHeight-1080*f)/2;
+    this.stage.style.transform=`translate(${x}px, ${y}px) scale(${f})`;
+  }
+  show(k){
+    this.i=(k+this.slides.length)%this.slides.length;
+    this.slides.forEach((s,j)=>{
+      s.classList.toggle('active',j===this.i);
+      s.classList.toggle('visible',j===this.i);
+    });
+    [...this.dotsBox.children].forEach((d,j)=>d.classList.toggle('on',j===this.i));
+    this.counter.textContent=(this.i+1)+' / '+this.slides.length;
+    this.progress.style.width=((this.i+1)/this.slides.length*100)+'%';
+    if(this.i===this.slides.length-1)this.rainHearts();
+  }
+  next(){this.show(this.i+1)} prev(){this.show(this.i-1)}
+  musicTry(){ if(this.audio&&this.audio.paused){this.audio.play().catch(()=>{});this.musicBtn.classList.add('on')} }
+  toggleMusic(){
+    if(!this.audio)return;
+    if(this.audio.paused){this.audio.play().catch(()=>{});this.musicBtn.classList.add('on');this.musicBtn.textContent='⏸️'}
+    else{this.audio.pause();this.musicBtn.classList.remove('on');this.musicBtn.textContent='🎵'}
+  }
+  rainHearts(){
+    const box=document.getElementById('finalHearts'); if(!box||box.dataset.done)return; box.dataset.done='1';
+    for(let k=0;k<24;k++){
+      const s=document.createElement('span');
+      s.textContent=['💖','💕','🌹','💘','✨'][k%5];
+      s.style.left=Math.random()*90+'%'; s.style.top='-5%';
+      s.style.animation='fall 3.5s ease-in forwards'; s.style.animationDelay=(k*0.15)+'s';
+      box.appendChild(s);
+    }
+    const st=document.createElement('style');
+    st.textContent='@keyframes fall{to{transform:translateY(1150px) rotate(30deg);opacity:0}}';
+    document.head.appendChild(st);
+  }
+}
+new SlidePresentation();
+</script>
 </body>
 </html>
