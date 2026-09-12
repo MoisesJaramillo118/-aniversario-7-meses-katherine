@@ -66,8 +66,6 @@ h1,h2{font-family:var(--fd);line-height:1.02}
 #dots button.on{background:var(--blush);transform:scale(1.4)}
 #count{color:#fff;font-size:14px;font-weight:700;white-space:nowrap}
 #bar{position:fixed;top:0;left:0;height:5px;width:0;background:linear-gradient(90deg,var(--rose),var(--gold));z-index:60}
-#music{position:fixed;top:calc(12px + env(safe-area-inset-top));right:12px;z-index:50;border:none;cursor:pointer;width:60px;height:60px;border-radius:50%;background:#fff;font-size:26px;box-shadow:0 8px 24px rgba(0,0,0,.25);display:flex;align-items:center;justify-content:center}
-#music.on{background:var(--gold)}
 /* ============ ANIMACIÓN: solo si hay JS; sin JS todo visible ============ */
 .js .rv{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
 .js .rv.in{opacity:1;transform:none}
@@ -82,8 +80,6 @@ canvas#conf{position:absolute;inset:0;z-index:1;pointer-events:none}
 </head>
 <body>
 <div id="bar"></div>
-<button id="music" aria-label="Nuestra canción">🎵</button>
-<audio id="song" loop preload="auto" src="audio/nuestra-cancion.mp3"></audio>
 
 <main class="deck" id="deck">
 
@@ -98,7 +94,6 @@ canvas#conf{position:absolute;inset:0;z-index:1;pointer-events:none}
       <p class="rv lead" style="color:#f5e3d3">Katherine &amp; Moisés — hace 7 meses empezó nuestra historia.</p>
       <div class="rv cta-row">
         <button class="btn rose" data-go="1">Empezar ↓</button>
-        <button class="btn ghost" id="playBtn">▶ Nuestra canción</button>
       </div>
     </div>
   </section>
@@ -337,14 +332,6 @@ canvas#conf{position:absolute;inset:0;z-index:1;pointer-events:none}
     document.querySelectorAll('.rv').forEach(function(el){ro.observe(el)});
   }
   paint();
-  // Música
-  var song=document.getElementById('song'), mus=document.getElementById('music'), playBtn=document.getElementById('playBtn');
-  function play(){song.play().then(function(){mus.classList.add('on');mus.textContent='⏸️'}).catch(function(){})}
-  mus.addEventListener('click',function(){
-    if(song.paused){play()}else{song.pause();mus.classList.remove('on');mus.textContent='🎵'}
-  });
-  if(playBtn)playBtn.addEventListener('click',play);
-  deck.addEventListener('touchstart',function(){if(song.paused)play()},{passive:true,once:true});
   // Confeti de corazones en el final
   var cv=document.getElementById('conf'), ctx=cv.getContext('2d'), parts=[], run=false;
   var EM=['💖','💕','🌹','💘','✨'];
