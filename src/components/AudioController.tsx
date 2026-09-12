@@ -79,6 +79,17 @@ export const AudioController: React.FC = () => {
       whileTap={{ scale: 0.9 }}
       className="w-14 h-14 bg-white/80 backdrop-blur-sm rounded-full flex flex-col items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 group"
     >
+      {/* Audio element */}
+      <audio
+        ref={audioRef}
+        id="background-audio"
+        loop
+        preload="auto"
+        src="/audio/nuestra-cancion.mp3"
+      >
+        Tu navegador no soporta el elemento de audio.
+      </audio>
+
       {/* Spotify-like visualization */}
       <motion.div className="flex space-x-1 mt-2">
         {[1, 2, 3, 4, 5].map((i) => (
