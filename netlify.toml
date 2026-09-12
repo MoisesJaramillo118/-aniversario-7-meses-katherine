@@ -1,0 +1,9 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[redirects]
+  /*    /index.html   200
+
+[[plugins]]
+  package = "@netlify/plugin-sitemap"
